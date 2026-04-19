@@ -16,7 +16,7 @@
 })();
 
 /* ═══════════════════════════════════════════════════
-   CORAZONES FLOTANTES — muy tenues
+   CORAZONES FLOTANTES
 ═══════════════════════════════════════════════════ */
 function crearC() {
   const c = document.createElement('div');
@@ -80,19 +80,19 @@ function ir(id) {
    CONSTELACIÓN
 ═══════════════════════════════════════════════════ */
 const estrellas = [
-  { x: .08, y: .18, msg: 'C de Cristian, que te eligió a ti 💙',   nombre: 'C',  tipo: 'inicial'  },
-  { x: .92, y: .18, msg: 'S de Sharick, mi persona favorita ❤️',  nombre: 'S',  tipo: 'inicial'  },
-  { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó todo 🗓️', nombre: '✦', tipo: 'fecha'    },
-  { x: .42, y: .52, msg: 'Este corazón late por ti 💖',             nombre: '♡', tipo: 'corazon'  },
-  { x: .58, y: .52, msg: 'Siempre, siempre ❤️',                    nombre: '♡', tipo: 'corazon'  },
-  { x: .38, y: .65, msg: 'Nuestro amor no tiene límites ∞',        nombre: '♡', tipo: 'corazon'  },
-  { x: .62, y: .65, msg: 'Juntos somos invencibles 🔥',            nombre: '♡', tipo: 'corazon'  },
-  { x: .5,  y: .78, msg: 'Todo termina y empieza en ti 🌹',        nombre: '♡', tipo: 'corazon'  },
-  { x: .25, y: .35, msg: 'Tu sonrisa es mi lugar seguro 😊',       nombre: '★', tipo: 'normal'   },
-  { x: .75, y: .35, msg: 'Te elegiría en cada universo 🌌',        nombre: '★', tipo: 'normal'   },
-  { x: .15, y: .75, msg: 'Gracias por existir en mi vida 🥰',      nombre: '★', tipo: 'normal'   },
-  { x: .85, y: .75, msg: 'Contigo el tiempo vuela ⏳',              nombre: '★', tipo: 'normal'   },
-  { x: .5,  y: .45, msg: 'El centro de todo lo que soy 💫',        nombre: '★', tipo: 'centro'   },
+  { x: .08, y: .18, msg: 'C de Cristian, que te eligió a ti 💙',    nombre: 'C',  tipo: 'inicial' },
+  { x: .92, y: .18, msg: 'S de Sharick, mi persona favorita ❤️',   nombre: 'S',  tipo: 'inicial' },
+  { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó todo 🗓️',  nombre: '✦', tipo: 'fecha'   },
+  { x: .42, y: .52, msg: 'Este corazón late por ti 💖',              nombre: '♡', tipo: 'corazon' },
+  { x: .58, y: .52, msg: 'Siempre, siempre ❤️',                     nombre: '♡', tipo: 'corazon' },
+  { x: .38, y: .65, msg: 'Nuestro amor no tiene límites ∞',         nombre: '♡', tipo: 'corazon' },
+  { x: .62, y: .65, msg: 'Juntos somos invencibles 🔥',             nombre: '♡', tipo: 'corazon' },
+  { x: .5,  y: .78, msg: 'Todo termina y empieza en ti 🌹',         nombre: '♡', tipo: 'corazon' },
+  { x: .25, y: .35, msg: 'Tu sonrisa es mi lugar seguro 😊',        nombre: '★', tipo: 'normal'  },
+  { x: .75, y: .35, msg: 'Te elegiría en cada universo 🌌',         nombre: '★', tipo: 'normal'  },
+  { x: .15, y: .75, msg: 'Gracias por existir en mi vida 🥰',       nombre: '★', tipo: 'normal'  },
+  { x: .85, y: .75, msg: 'Contigo el tiempo vuela ⏳',               nombre: '★', tipo: 'normal'  },
+  { x: .5,  y: .45, msg: 'El centro de todo lo que soy 💫',         nombre: '★', tipo: 'centro'  },
 ];
 const lineas = [
   [0,2],[2,1],[3,4],[4,6],[6,7],[7,5],[5,3],[8,0],[9,1],[2,12],[12,3],[12,4]
@@ -105,25 +105,28 @@ function dibujarConst() {
   const ctx = cv.getContext('2d');
   const W = cv.width, H = cv.height;
   ctx.clearRect(0, 0, W, H);
-  // fondo
+
   const g = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*.65);
-  g.addColorStop(0,'rgba(22,0,44,.85)'); g.addColorStop(1,'rgba(4,0,12,.96)');
+  g.addColorStop(0,'rgba(22,0,44,.85)');
+  g.addColorStop(1,'rgba(4,0,12,.96)');
   ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-  // líneas
+
   ctx.strokeStyle = 'rgba(255,105,180,.2)'; ctx.lineWidth = 1;
   lineas.forEach(([a,b]) => {
     const ea = estrellas[a], eb = estrellas[b];
     ctx.beginPath(); ctx.moveTo(ea.x*W, ea.y*H); ctx.lineTo(eb.x*W, eb.y*H); ctx.stroke();
   });
-  // estrellas
+
   const colMap = { inicial:'#ff69b4', fecha:'#ffd700', corazon:'#ff1493', centro:'#fff', normal:'#e0e0ff' };
   const rgbMap = { '#ff69b4':'255,105,180', '#ffd700':'255,215,0', '#ff1493':'255,20,147', '#fff':'255,255,255', '#e0e0ff':'224,224,255' };
+
   estrellas.forEach(e => {
     const x = e.x*W, y = e.y*H;
     const r = { inicial:13, fecha:11, centro:10, corazon:9, normal:7 }[e.tipo];
     const col = colMap[e.tipo];
     const glow = ctx.createRadialGradient(x,y,0,x,y,r*3.5);
-    glow.addColorStop(0, `rgba(${rgbMap[col]},.35)`); glow.addColorStop(1,'transparent');
+    glow.addColorStop(0, `rgba(${rgbMap[col]},.35)`);
+    glow.addColorStop(1,'transparent');
     ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x,y,r*3.5,0,Math.PI*2); ctx.fill();
     ctx.shadowBlur = 14; ctx.shadowColor = col;
     ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
@@ -135,34 +138,36 @@ function dibujarConst() {
   });
 }
 
-document.getElementById('cv-const')?.addEventListener('click', function(ev) {
-  const rect = this.getBoundingClientRect();
-  const sx = (ev.clientX - rect.left) / rect.width;
-  const sy = (ev.clientY - rect.top)  / rect.height;
-  const tip = document.getElementById('ttip');
-  let tocada = null;
-  estrellas.forEach(e => {
-    const dx = sx - e.x, dy = sy - e.y;
-    if (Math.sqrt(dx*dx + dy*dy) < .065) tocada = e;
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('cv-const')?.addEventListener('click', function(ev) {
+    const rect = this.getBoundingClientRect();
+    const sx = (ev.clientX - rect.left) / rect.width;
+    const sy = (ev.clientY - rect.top)  / rect.height;
+    const tip = document.getElementById('ttip');
+    let tocada = null;
+    estrellas.forEach(e => {
+      const dx = sx - e.x, dy = sy - e.y;
+      if (Math.sqrt(dx*dx + dy*dy) < .065) tocada = e;
+    });
+    if (tocada) {
+      tip.textContent = tocada.msg;
+      tip.style.left = (ev.clientX + 14) + 'px';
+      tip.style.top  = (ev.clientY - 18) + 'px';
+      tip.classList.add('on');
+      clearTimeout(tip._t);
+      tip._t = setTimeout(() => tip.classList.remove('on'), 3200);
+    }
   });
-  if (tocada) {
-    tip.textContent = tocada.msg;
-    tip.style.left = (ev.clientX + 14) + 'px';
-    tip.style.top  = (ev.clientY - 18) + 'px';
-    tip.classList.add('on');
-    clearTimeout(tip._t);
-    tip._t = setTimeout(() => tip.classList.remove('on'), 3200);
-  }
 });
 
 /* ═══════════════════════════════════════════════════
    UNIVERSO — PLANETAS
 ═══════════════════════════════════════════════════ */
 const planetas = [
-  { ic:'💖', nombre:'Amor',       color:'#ff1493', desc:'Aquí vive todo el amor que siento por ti. Crece cada día sin límite, sin fin, sin condiciones.',                                       size:50, dist:.30, vel:11 },
-  { ic:'🤝', nombre:'Confianza',  color:'#4fc3f7', desc:'En este planeta construimos todo. La confianza que me das es el aire que respiro y nunca la daré por sentada.',                      size:38, dist:.41, vel:18 },
-  { ic:'📸', nombre:'Recuerdos',  color:'#ffd54f', desc:'Cada foto, cada risa, cada momento compartido vive aquí. Este planeta se hace más grande con el tiempo.',                             size:35, dist:.51, vel:26 },
-  { ic:'🌅', nombre:'Futuro',     color:'#a5d6a7', desc:'Todo lo que quiero vivir contigo. Los viajes, los proyectos, los sueños. El futuro tiene tu nombre.',                                size:42, dist:.62, vel:36 },
+  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Aquí vive todo el amor que siento por ti. Crece cada día sin límite, sin fin, sin condiciones.',                              size:50, dist:.30, vel:11 },
+  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'En este planeta construimos todo. La confianza que me das es el aire que respiro y nunca la daré por sentada.',              size:38, dist:.41, vel:18 },
+  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Cada foto, cada risa, cada momento compartido vive aquí. Este planeta se hace más grande con el tiempo.',                    size:35, dist:.51, vel:26 },
+  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Todo lo que quiero vivir contigo. Los viajes, los proyectos, los sueños. El futuro tiene tu nombre.',                       size:42, dist:.62, vel:36 },
 ];
 
 function buildUniverso() {
@@ -186,7 +191,7 @@ function buildUniverso() {
 }
 
 function abrirModal(p) {
-  document.getElementById('m-ic').textContent    = p.ic;
+  document.getElementById('m-ic').textContent     = p.ic;
   document.getElementById('m-nombre').textContent = p.nombre;
   document.getElementById('m-desc').textContent   = p.desc;
   document.getElementById('modal-bg').classList.remove('hidden');
@@ -229,10 +234,10 @@ function girarDestino() {
    ESCAPE ROOM
 ═══════════════════════════════════════════════════ */
 const pistas = [
-  { q:'¿Cuál es el ingrediente secreto de nuestra historia?',    ops:['El tiempo','El amor','La suerte','La distancia'],         ok:1 },
-  { q:'Si nuestro amor fuera un lugar, ¿cuál sería?',            ops:['Una ciudad fría','Un lugar sin nombre','Donde estemos juntos','El pasado'], ok:2 },
-  { q:'¿Qué es lo que nunca cambiará entre nosotros?',           ops:['Nada','Las peleas','La distancia','Lo que sentimos'],      ok:3 },
-  { q:'La respuesta a todo siempre es...',                       ops:['El tiempo','El azar','Tú','Cualquier cosa'],               ok:2 },
+  { q:'¿Cuál es el ingrediente secreto de nuestra historia?',   ops:['El tiempo','El amor','La suerte','La distancia'],                    ok:1 },
+  { q:'Si nuestro amor fuera un lugar, ¿cuál sería?',           ops:['Una ciudad fría','Un lugar sin nombre','Donde estemos juntos','El pasado'], ok:2 },
+  { q:'¿Qué es lo que nunca cambiará entre nosotros?',          ops:['Nada','Las peleas','La distancia','Lo que sentimos'],                 ok:3 },
+  { q:'La respuesta a todo siempre es...',                      ops:['El tiempo','El azar','Tú','Cualquier cosa'],                          ok:2 },
 ];
 let pistaActual = 0;
 
@@ -285,12 +290,12 @@ function reiniciarEscape() { iniciarEscape(); }
    IMPACTO EN MI VIDA
 ═══════════════════════════════════════════════════ */
 const impData = [
-  { lbl:'💛 Felicidad',       val:'+∞%',   pct:100, color:'linear-gradient(90deg,#ffd54f,#ff9800)' },
-  { lbl:'❤️ Amor',            val:'+1000%', pct:100, color:'linear-gradient(90deg,#ff1493,#c2185b)' },
-  { lbl:'😔 Tristeza',        val:'-90%',   pct:10,  color:'linear-gradient(90deg,#7e57c2,#512da8)' },
-  { lbl:'☀️ Días buenos',     val:'+200%',  pct:95,  color:'linear-gradient(90deg,#ffcc02,#ff9800)' },
-  { lbl:'🌙 Noches tranquilas',val:'+300%', pct:88,  color:'linear-gradient(90deg,#4fc3f7,#1565c0)' },
-  { lbl:'🔥 Ganas de vivir',  val:'+500%',  pct:98,  color:'linear-gradient(90deg,#ff6e40,#ff1744)' },
+  { lbl:'💛 Felicidad',        val:'+∞%',   pct:100, color:'linear-gradient(90deg,#ffd54f,#ff9800)' },
+  { lbl:'❤️ Amor',             val:'+1000%', pct:100, color:'linear-gradient(90deg,#ff1493,#c2185b)' },
+  { lbl:'😔 Tristeza',         val:'-90%',   pct:10,  color:'linear-gradient(90deg,#7e57c2,#512da8)' },
+  { lbl:'☀️ Días buenos',      val:'+200%',  pct:95,  color:'linear-gradient(90deg,#ffcc02,#ff9800)' },
+  { lbl:'🌙 Noches tranquilas', val:'+300%', pct:88,  color:'linear-gradient(90deg,#4fc3f7,#1565c0)' },
+  { lbl:'🔥 Ganas de vivir',   val:'+500%',  pct:98,  color:'linear-gradient(90deg,#ff6e40,#ff1744)' },
 ];
 (function () {
   const g = document.getElementById('imp-grid');
@@ -304,6 +309,7 @@ const impData = [
     </div>`;
   });
 })();
+
 function animarImpacto() {
   document.querySelectorAll('.brelleno').forEach(b => setTimeout(() => (b.style.width = b.dataset.pct + '%'), 200));
   document.querySelectorAll('.imp-val').forEach(v => setTimeout(() => v.classList.add('vis'), 400));
@@ -313,9 +319,9 @@ function animarImpacto() {
    JUEGO DE DECISIONES
 ═══════════════════════════════════════════════════ */
 const arbol = [
-  { q:'Si pudiera elegir mil veces...', ops:[{t:'Te elegiría',n:1},{t:'Te elegiría otra vez',n:1}] },
-  { q:'Y si el tiempo se reiniciara...', ops:[{t:'Volvería a buscarte',n:2},{t:'Esperaría a que llegaras',n:2}] },
-  { q:'Porque al final de todo...', ops:[{t:'Eres mi persona favorita',n:3},{t:'Eres mi lugar seguro',n:3}] },
+  { q:'Si pudiera elegir mil veces...',    ops:[{t:'Te elegiría',n:1},          {t:'Te elegiría otra vez',n:1}]    },
+  { q:'Y si el tiempo se reiniciara...',   ops:[{t:'Volvería a buscarte',n:2},  {t:'Esperaría a que llegaras',n:2}] },
+  { q:'Porque al final de todo...',        ops:[{t:'Eres mi persona favorita',n:3},{t:'Eres mi lugar seguro',n:3}] },
   { res:'La respuesta siempre fuiste tú, Sharick. En cada universo, en cada versión de esta historia, en cada elección posible... siempre, siempre tú. 💕' },
 ];
 function cargarDec(idx) {
@@ -378,15 +384,15 @@ function girarRuleta() {
    RAZONES POR LAS QUE TE AMO
 ═══════════════════════════════════════════════════ */
 const razonesData = [
-  { ic:'😊', titulo:'Tu sonrisa',          texto:'Cuando sonríes el mundo entero tiene más sentido. No hay nada igual en este universo.' },
-  { ic:'🫂', titulo:'Tu abrazo',            texto:'En tus brazos siempre encuentro el lugar más seguro y cálido que existe.' },
-  { ic:'💬', titulo:'Tu forma de hablar',   texto:'Puedo escucharte hablar horas y horas y siempre querer más. Eres fascinante.' },
-  { ic:'💪', titulo:'Tu fortaleza',         texto:'Admiro profundamente lo valiente que eres. Enfrentas la vida con una fuerza que me inspira.' },
-  { ic:'🎨', titulo:'Tu creatividad',       texto:'Todo lo que tocas lo conviertes en algo hermoso. Tienes un talento único para hacer magia.' },
-  { ic:'🌙', titulo:'Tu corazón',           texto:'Tienes el corazón más bonito que he conocido. Tu bondad me hace mejor persona cada día.' },
-  { ic:'🤣', titulo:'Tu humor',             texto:'Me haces reír como nadie más puede. Contigo hasta los días difíciles tienen una sonrisa.' },
-  { ic:'🌟', titulo:'Tu luz',               texto:'Entras a un lugar y lo iluminas todo sin siquiera intentarlo. Eres luz pura, Sharick.' },
-  { ic:'🧠', titulo:'Tu inteligencia',      texto:'Eres brillante. Me sorprendes constantemente con lo que piensas y cómo ves el mundo.' },
+  { ic:'😊', titulo:'Tu sonrisa',        texto:'Cuando sonríes el mundo entero tiene más sentido. No hay nada igual en este universo.' },
+  { ic:'🫂', titulo:'Tu abrazo',          texto:'En tus brazos siempre encuentro el lugar más seguro y cálido que existe.' },
+  { ic:'💬', titulo:'Tu forma de hablar', texto:'Puedo escucharte hablar horas y horas y siempre querer más. Eres fascinante.' },
+  { ic:'💪', titulo:'Tu fortaleza',       texto:'Admiro profundamente lo valiente que eres. Enfrentas la vida con una fuerza que me inspira.' },
+  { ic:'🎨', titulo:'Tu creatividad',     texto:'Todo lo que tocas lo conviertes en algo hermoso. Tienes un talento único para hacer magia.' },
+  { ic:'🌙', titulo:'Tu corazón',         texto:'Tienes el corazón más bonito que he conocido. Tu bondad me hace mejor persona cada día.' },
+  { ic:'🤣', titulo:'Tu humor',           texto:'Me haces reír como nadie más puede. Contigo hasta los días difíciles tienen una sonrisa.' },
+  { ic:'🌟', titulo:'Tu luz',             texto:'Entras a un lugar y lo iluminas todo sin siquiera intentarlo. Eres luz pura, Sharick.' },
+  { ic:'🧠', titulo:'Tu inteligencia',    texto:'Eres brillante. Me sorprendes constantemente con lo que piensas y cómo ves el mundo.' },
 ];
 
 function buildRazones() {
@@ -443,10 +449,8 @@ function actualizarBadges() {
 
 function desbloquear() {
   if (found.size < 6) return;
-  // Ocultar zona de códigos y mostrar contenido desbloqueado
   document.getElementById('vista-cod').classList.add('hidden');
   document.getElementById('contenido-desbloqueado').classList.remove('hidden');
-  // Lluvia de corazones
   for (let i = 0; i < 50; i++) setTimeout(() => {
     const c = document.createElement('div');
     c.style.cssText = `position:fixed;font-size:${Math.random()*24+14}px;
@@ -458,7 +462,6 @@ function desbloquear() {
   }, i * 80);
 }
 
-// Keyframes lluvia final
 const sLluvia = document.createElement('style');
 sLluvia.textContent = `@keyframes finLluvia{
   from{transform:translateY(0) rotate(0deg);opacity:1}
@@ -466,18 +469,15 @@ sLluvia.textContent = `@keyframes finLluvia{
 document.head.appendChild(sLluvia);
 
 /* ═══════════════════════════════════════════════════
-   NAVEGACIÓN INTERNA — EXTRAS POST-DESBLOQUEO
+   NAVEGACIÓN EXTRAS POST-DESBLOQUEO
 ═══════════════════════════════════════════════════ */
 function mostrarExtra(id) {
-  // Ocultar todos los paneles extras
   document.querySelectorAll('.panel-extra').forEach(p => p.classList.add('hidden'));
-  // Mostrar el pedido
   const panel = document.getElementById(id);
   if (panel) {
     panel.classList.remove('hidden');
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (id === 'panel-ruleta') {
-      // reiniciar ruleta visualmente
       document.getElementById('ruleta-msg').textContent = 'Presiona girar para recibir tu mensaje... ✨';
       document.getElementById('ruleta-msg').style.opacity = '1';
     }
