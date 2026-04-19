@@ -15,9 +15,6 @@
   }
 })();
 
-/* ═══════════════════════════════════════════════════
-   CORAZONES FLOTANTES
-═══════════════════════════════════════════════════ */
 function crearC() {
   const c = document.createElement('div');
   c.className = 'corazon';
@@ -34,9 +31,7 @@ function crearC() {
 setInterval(crearC, 1100);
 for (let i = 0; i < 4; i++) setTimeout(crearC, i * 400);
 
-/* ═══════════════════════════════════════════════════
-   MÚSICA DE FONDO
-═══════════════════════════════════════════════════ */
+
 let musicPlaying = false;
 const audio = document.getElementById('bg-music');
 audio.volume = 0.22;
@@ -55,9 +50,7 @@ function toggleMusic() {
   musicPlaying = !musicPlaying;
 }
 
-/* ═══════════════════════════════════════════════════
-   NAVEGACIÓN ENTRE SECCIONES
-═══════════════════════════════════════════════════ */
+
 function ir(id) {
   document.querySelectorAll('.sec').forEach(s => {
     s.style.opacity = '0';
@@ -76,23 +69,21 @@ function ir(id) {
   }, 300);
 }
 
-/* ═══════════════════════════════════════════════════
-   CONSTELACIÓN
-═══════════════════════════════════════════════════ */
+
 const estrellas = [
   { x: .08, y: .18, msg: 'Esta constelación es una pequeña referencia porque gracias a ti he podido cambiar poco a poco en la vida y lograr ser una mejor persona, y lograste que este tonto apático fuera capaz de ser meloso y logre ser una supernova. 💙', nombre: 'C',  tipo: 'inicial' },
-  { x: .92, y: .18, msg: 'Esta sección es solo para recordarte que para mí siempre serás mi persona más importante y una gran estrella que vino a mi vida y  a iluminarla en todo momento y por eso solo queda decir: te amo, mi pequeña nalgona, jajaja.❤️',   nombre: 'S',  tipo: 'inicial' },
-  { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó toda esta pequeña aventura que decidimos comenzar hace ya un año... ¿Quién diría que duraríamos tanto con tantos problemas, jajaaja? Pero eso solo significa que, si logramos un año, nos queda mucho más por delante, mi vida. 🗓️',  nombre: '✦', tipo: 'fecha'   },
-  { x: .42, y: .52, msg: 'Este pequeño corazón es para demostrar una pequeña parte de todo el amor que siento por ti; después de todo, una estrella es pequeña comparada con todo lo que te amo. 💖',              nombre: '♡', tipo: 'corazon' },
-  { x: .58, y: .52, msg: 'Siempre, siempre estaré ahí para ti, no importa qué suceda y lo que deje de suceder; siempre intentaré estar presente, no importa si esto acaba; ahí estaré presente. Después de todo, tú eres mi todo, mi vida. ❤️',                     nombre: '♡', tipo: 'corazon' },
-  { x: .38, y: .65, msg: ' Mi amor por ti es infinito; después de todo, no hay límites para lo que puedes hacer cuando sientes que alguien es capaz de darlo todo por ti también y, si no entendiste lo que dije, básicamente te amo, loquita. ∞',         nombre: '♡', tipo: 'corazon' },
-  { x: .62, y: .65, msg: 'Juntos somos una locura, amor, aunque a ti te cueste más aceptar que debemos hacer las cosas mucho más juntos. Mi pequeña princesa, es necesario que lo repita, pero siempre que estemos juntos, somos invencibles, mi niña. ',             nombre: '♡', tipo: 'corazon' },
-  { x: .5,  y: .78, msg: 'Todo esto inicia y termina en ti, mi pequeña princesa; tú eres la que decide y decidirá todo lo que conlleve lo nuestro, mi pequeña princesa, te amo. 🌹',         nombre: '♡', tipo: 'corazon' },
-  { x: .25, y: .35, msg: 'Tus nalgas, digo, digo, tu sonrisa siempre será la razón por la que me enamoré de ti, mi pequeña princesa, siempre que sigas teniendo esa gran sonrisa que es capaz de iluminar mi vida en cualquier momento, mi princesa culona. 😊',        nombre: '★', tipo: 'normal'  },
-  { x: .75, y: .35, msg: 'Como verás más adelante, siempre seremos tú y yo en cada universo, mi pequeña princesa. Ojalá y se mantengan esas nalgas en cada universo, aunque sea un segundo plano comparado con tu sonrisa; es importante, mi vida, jajaja, ti amo, princesa. 🌌',         nombre: '★', tipo: 'normal'  },
-  { x: .15, y: .75, msg: 'Gracias por elegirme a mí para acompañarte en tu vida, mi pequeña princesa, y por cambiar tanto de gustarte la arepa a gustarte mi salchicha, jajajaja, porque sé que sigues odiando a todos los hombres fuera de mí. Ti amo, culona. 🥰',       nombre: '★', tipo: 'normal'  },
-  { x: .85, y: .75, msg: 'Contigo el tiempo vuela, mi pequeña princesa; después de todo, cada momento contigo no es más que felicidad  y diversión, y aunque a veces parezca que el universo nos odia porque cuando estamos juntos va demasiado rápido, siempre será bueno, aunque sea poco. ⏳',               nombre: '★', tipo: 'normal'  },
-  { x: .5,  y: .45, msg: 'Tú eres el centro de todo lo que soy como persona e individuo. No importa qué pase ni qué pienses tú misma. Sé que piensas que me has hecho mucho daño, pero tú siempre serás mi princesa. Te amo, mi amor. 💫',         nombre: '★', tipo: 'centro'  },
+  { x: .92, y: .18, msg: 'Esta sección es solo para recordarte que para mí siempre serás mi persona más importante y una gran estrella que vino a mi vida y  a iluminarla en todo momento y por eso solo queda decir: te amo, mi pequeña nalgona, jajaja.❤️', nombre: 'S',  tipo: 'inicial' },
+  { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó toda esta pequeña aventura que decidimos comenzar hace ya un año... ¿Quién diría que duraríamos tanto con tantos problemas, jajaaja? Pero eso solo significa que, si logramos un año, nos queda mucho más por delante, mi vida. 🗓️', nombre: '✦', tipo: 'fecha'   },
+  { x: .42, y: .52, msg: 'Este pequeño corazón es para demostrar una pequeña parte de todo el amor que siento por ti; después de todo, una estrella es pequeña comparada con todo lo que te amo. 💖', nombre: '♡', tipo: 'corazon' },
+  { x: .58, y: .52, msg: 'Siempre, siempre estaré ahí para ti, no importa qué suceda y lo que deje de suceder; siempre intentaré estar presente, no importa si esto acaba; ahí estaré presente. Después de todo, tú eres mi todo, mi vida. ❤️', nombre: '♡', tipo: 'corazon' },
+  { x: .38, y: .65, msg: ' Mi amor por ti es infinito; después de todo, no hay límites para lo que puedes hacer cuando sientes que alguien es capaz de darlo todo por ti también y, si no entendiste lo que dije, básicamente te amo, loquita. ∞', nombre: '♡', tipo: 'corazon' },
+  { x: .62, y: .65, msg: 'Juntos somos una locura, amor, aunque a ti te cueste más aceptar que debemos hacer las cosas mucho más juntos. Mi pequeña princesa, es necesario que lo repita, pero siempre que estemos juntos, somos invencibles, mi niña. ', nombre: '♡', tipo: 'corazon' },
+  { x: .5,  y: .78, msg: 'Todo esto inicia y termina en ti, mi pequeña princesa; tú eres la que decide y decidirá todo lo que conlleve lo nuestro, mi pequeña princesa, te amo. 🌹', nombre: '♡', tipo: 'corazon' },
+  { x: .25, y: .35, msg: 'Tus nalgas, digo, digo, tu sonrisa siempre será la razón por la que me enamoré de ti, mi pequeña princesa, siempre que sigas teniendo esa gran sonrisa que es capaz de iluminar mi vida en cualquier momento, mi princesa culona. 😊', nombre: '★', tipo: 'normal'  },
+  { x: .75, y: .35, msg: 'Como verás más adelante, siempre seremos tú y yo en cada universo, mi pequeña princesa. Ojalá y se mantengan esas nalgas en cada universo, aunque sea un segundo plano comparado con tu sonrisa; es importante, mi vida, jajaja, ti amo, princesa. 🌌', nombre: '★', tipo: 'normal'  },
+  { x: .15, y: .75, msg: 'Gracias por elegirme a mí para acompañarte en tu vida, mi pequeña princesa, y por cambiar tanto de gustarte la arepa a gustarte mi salchicha, jajajaja, porque sé que sigues odiando a todos los hombres fuera de mí. Ti amo, culona. 🥰', nombre: '★', tipo: 'normal'  },
+  { x: .85, y: .75, msg: 'Contigo el tiempo vuela, mi pequeña princesa; después de todo, cada momento contigo no es más que felicidad  y diversión, y aunque a veces parezca que el universo nos odia porque cuando estamos juntos va demasiado rápido, siempre será bueno, aunque sea poco. ⏳', nombre: '★', tipo: 'normal'  },
+  { x: .5,  y: .45, msg: 'Tú eres el centro de todo lo que soy como persona e individuo. No importa qué pase ni qué pienses tú misma. Sé que piensas que me has hecho mucho daño, pero tú siempre serás mi princesa. Te amo, mi amor. 💫', nombre: '★', tipo: 'centro'  },
 ];
 const lineas = [
   [0,2],[2,1],[3,4],[4,6],[6,7],[7,5],[5,3],[8,0],[9,1],[2,12],[12,3],[12,4]
@@ -160,11 +151,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ═══════════════════════════════════════════════════
-   UNIVERSO — PLANETAS
-═══════════════════════════════════════════════════ */
+
 const planetas = [
-  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Aquí vive todo el amor que siento por ti. Crece cada día sin límite, sin fin, sin condiciones.',                              size:50, dist:.30, vel:11 },
+  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.10, vel:11 },
   { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'En este planeta construimos todo. La confianza que me das es el aire que respiro y nunca la daré por sentada.',              size:38, dist:.41, vel:18 },
   { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Cada foto, cada risa, cada momento compartido vive aquí. Este planeta se hace más grande con el tiempo.',                    size:35, dist:.51, vel:26 },
   { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Todo lo que quiero vivir contigo. Los viajes, los proyectos, los sueños. El futuro tiene tu nombre.',                       size:42, dist:.62, vel:36 },
