@@ -5,20 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>♥ Nuestro universo ♥</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head><!-- ← ERROR 1 CORREGIDO: faltaba cerrar </head> antes de <body> -->
 <body>
 
 <div id="stars-bg"></div>
 <div id="music-btn" onclick="toggleMusic()" title="Música de fondo">🎵</div>
 <audio id="bg-music" loop>
-  <source src="lover.mp3" type="audio/mpeg">
+  <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ═══════════════════════════════════════════
-     MENÚ PRINCIPAL
-═══════════════════════════════════════════ -->
+<!-- ═══ MENÚ PRINCIPAL ═══ -->
 <section id="sec-menu" class="sec" style="opacity:0">
-</button>
+  <!-- ERROR 2 CORREGIDO: había un </button> suelto que rompía todo el HTML -->
   <h2 class="t">Hay más para ti 💫</h2>
   <p class="sub">Explora cada rincón de este universo que creé solo para ti</p>
   <div class="menu-grid">
@@ -54,9 +53,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     CONSTELACIÓN
-═══════════════════════════════════════════ -->
+<!-- ═══ CONSTELACIÓN ═══ -->
 <section id="sec-constelacion" class="sec hidden">
   <h2 class="t">Nuestra Constelación ✨</h2>
   <p class="sub">Toca cada estrella brillante para descubrir su mensaje 💫</p>
@@ -66,9 +63,7 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     UNIVERSO
-═══════════════════════════════════════════ -->
+<!-- ═══ UNIVERSO ═══ -->
 <section id="sec-universo" class="sec hidden">
   <h2 class="t">Nuestro Universo 🪐</h2>
   <p class="sub">Haz clic en cada planeta para descubrir su significado</p>
@@ -88,9 +83,7 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     MÁQUINA DEL DESTINO
-═══════════════════════════════════════════ -->
+<!-- ═══ MÁQUINA DEL DESTINO ═══ -->
 <section id="sec-destino" class="sec hidden">
   <div class="dest-caja">
     <h2 class="t">Máquina del Destino 🔮</h2>
@@ -104,9 +97,7 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     ESCAPE ROOM
-═══════════════════════════════════════════ -->
+<!-- ═══ ESCAPE ROOM ═══ -->
 <section id="sec-escape" class="sec hidden">
   <div class="esc-caja">
     <h2 class="t">Escape Room 🗝️</h2>
@@ -131,9 +122,7 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     IMPACTO
-═══════════════════════════════════════════ -->
+<!-- ═══ IMPACTO ═══ -->
 <section id="sec-impacto" class="sec hidden">
   <h2 class="t">Tu Impacto en Mi Vida 📊</h2>
   <p class="sub">Los números nunca mienten, mi amor</p>
@@ -142,9 +131,7 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     DECISIONES
-═══════════════════════════════════════════ -->
+<!-- ═══ DECISIONES ═══ -->
 <section id="sec-decisiones" class="sec hidden">
   <div class="dec-caja">
     <h2 class="t">Si pudiera elegir... 💭</h2>
@@ -154,15 +141,12 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FINAL SECRETO
-═══════════════════════════════════════════ -->
+<!-- ═══ FINAL SECRETO ═══ -->
 <section id="sec-final" class="sec hidden">
   <div class="final-wrap">
     <h2 class="t">Final Secreto 🔐</h2>
     <p class="sub">Ingresa los 6 códigos que encontraste en cada sección</p>
 
-    <!-- ── INGRESO DE CÓDIGOS ── -->
     <div id="vista-cod">
       <p style="font-family:'Cinzel',serif;letter-spacing:2px;font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:12px">
         CÓDIGOS ENCONTRADOS
@@ -189,12 +173,7 @@
       </div>
     </div>
 
-    <!-- ══════════════════════════════════════
-         CONTENIDO DESBLOQUEADO
-    ══════════════════════════════════════ -->
     <div id="contenido-desbloqueado" class="hidden">
-
-      <!-- Carta final -->
       <div class="carta-final" style="margin-bottom:14px">
         <div style="font-size:3.2rem;margin-bottom:18px">💌✨🌹</div>
         <h3>Para ti, mi Sharick</h3>
@@ -209,7 +188,6 @@
 
       <div class="sep"></div>
 
-      <!-- Botones interactivos para las nuevas secciones -->
       <p class="extras-titulo">Hay aún más para ti... 🎁</p>
       <p class="extras-sub">Elige qué quieres explorar primero</p>
 
@@ -236,9 +214,9 @@
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Nuestras Fotos 🖼️</p>
         <p class="extras-sub" style="margin-bottom:16px">Cada imagen guarda un recuerdo que atesoro</p>
         <div class="collage-triangulo">
-<img src="img/nosotros.jpg">
-<img src="img/nosotros2.jpg">
-<img src="img/nosotros4.png">
+          <img class="collage-img" src="img/nosotros4.png" alt="Nosotros">
+          <img class="collage-img" src="img/nosotros.jpg"  alt="Nosotros">
+          <img class="collage-img" src="img/nosotros2.jpg" alt="Nosotros">
         </div>
         <button class="btn" style="margin-top:6px" onclick="cerrarExtra('panel-collage')">Cerrar 💫</button>
       </div>
@@ -272,10 +250,9 @@
 
       <button class="btn" style="margin-top:28px" onclick="ir('sec-menu')">← Volver al inicio</button>
     </div>
-    <!-- /contenido-desbloqueado -->
-
   </div>
 </section>
 
-<script src="js/main.js">
+<script src="js/main.js"></script><!-- ← ERROR 3 CORREGIDO: faltaba cerrar </script> correctamente -->
+</body>
 </html>
