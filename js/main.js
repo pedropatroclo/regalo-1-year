@@ -80,7 +80,7 @@ function ir(id) {
    CONSTELACIÓN
 ═══════════════════════════════════════════════════ */
 const estrellas = [
-  { x: .08, y: .18, msg: 'Esta constelacion es C ademas de mi por mi nombre es pq gracias a ti e podido cambiar poco a poco en la vida  y lograr se una mejor persona y lograste que pasara de ser una estrella enana a una supernova 💙',nombre: 'C',  tipo: 'inicial' },
+  { x: .08, y: .18, msg: 'Esta constelacion es C ademas de mi por mi nombre es pq gracias a ti e podido cambiar poco a poco en la vida  y lograr se una mejor persona y lograste que pasara de ser una estrella enana a una supernova 💙', nombre: 'C',  tipo: 'inicial' },
   { x: .92, y: .18, msg: 'S de Sharick, mi persona favorita ❤️',   nombre: 'S',  tipo: 'inicial' },
   { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó todo 🗓️',  nombre: '✦', tipo: 'fecha'   },
   { x: .42, y: .52, msg: 'Este corazón late por ti 💖',              nombre: '♡', tipo: 'corazon' },
