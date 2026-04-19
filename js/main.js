@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════════════
-   ESTRELLAS DE FONDO
-═══════════════════════════════════════════════════ */
+
 (function () {
   const bg = document.getElementById('stars-bg');
   for (let i = 0; i < 130; i++) {
