@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>♥ Nuestro universo ♥</title>
+  <title>♥Nuestro pequeño rincon del universo♥</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilos.css">
-</head><!-- ← ERROR 1 CORREGIDO: faltaba cerrar </head> antes de <body> -->
+</head>
 <body>
 
 <div id="stars-bg"></div>
@@ -15,31 +15,30 @@
   <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ═══ MENÚ PRINCIPAL ═══ -->
 <section id="sec-menu" class="sec" style="opacity:0">
-  <!-- ERROR 2 CORREGIDO: había un </button> suelto que rompía todo el HTML -->
-  <h2 class="t">Hay más para ti 💫</h2>
-  <p class="sub">Explora cada rincón de este universo que creé solo para ti</p>
+  
+  <h2 class="t"> Mi linda princesa 💫</h2>
+  <p class="sub">Esta pequeña seccion estan hechas para que puedas ver y sentir un poco de la obsecion que siento por ti</p>
   <div class="menu-grid">
     <div class="menu-card" onclick="ir('sec-constelacion')">
-      <span class="ic">✨</span><h3>Nuestra Constelación</h3>
+      <span class="ic">✨</span><h3>Nuestra Constelación❤️</h3>
       <p>Un cielo lleno de estrellas con mensajes secretos</p>
     </div>
     <div class="menu-card" onclick="ir('sec-universo')">
-      <span class="ic">🪐</span><h3>Nuestro Universo</h3>
-      <p>Cada planeta representa algo de lo que somos juntos</p>
+      <span class="ic">🪐</span><h3>Nuestro Universo❤️</h3>
+      <p>Cada planeta representa algo de lo que somos juntos mi niña</p>
     </div>
     <div class="menu-card" onclick="ir('sec-destino')">
       <span class="ic">🔮</span><h3>Máquina del Destino</h3>
-      <p>Descubre lo que nos tiene reservado el futuro</p>
+      <p>Descubre lo que haremos a futuro pequeña princesa</p>
     </div>
     <div class="menu-card" onclick="ir('sec-escape')">
       <span class="ic">🗝️</span><h3>Escape Room</h3>
-      <p>Resuelve las pistas y desbloquea el mensaje final</p>
+      <p>Resuelva mija demuestre que aparte de medica eres detective jaajaj</p>
     </div>
     <div class="menu-card" onclick="ir('sec-impacto')">
       <span class="ic">📊</span><h3>Tu Impacto en Mi Vida</h3>
-      <p>Números que no mienten sobre lo que me haces sentir</p>
+      <p>Números de todo lo que me has hecho sentir</p>
     </div>
     <div class="menu-card" onclick="ir('sec-decisiones')">
       <span class="ic">💭</span><h3>Juego de Decisiones</h3>
@@ -53,26 +52,23 @@
   </div>
 </section>
 
-<!-- ═══ CONSTELACIÓN ═══ -->
 <section id="sec-constelacion" class="sec hidden">
-  <h2 class="t">Nuestra Constelación ✨</h2>
-  <p class="sub">Toca cada estrella brillante para descubrir su mensaje 💫</p>
+  <h2 class="t">❤️Nuestra Constelación pequeña princesa ✨</h2>
+  <p class="sub">Toca cada estrella para poder descubrir las estrellas de amor que has hecho en mi 💫</p>
   <p class="code-hint" style="margin-bottom:18px">Código de esta sección: <strong>STAR</strong></p>
   <canvas id="cv-const" width="660" height="400"></canvas>
   <div class="tooltip-e" id="ttip"></div>
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══ UNIVERSO ═══ -->
 <section id="sec-universo" class="sec hidden">
-  <h2 class="t">Nuestro Universo 🪐</h2>
-  <p class="sub">Haz clic en cada planeta para descubrir su significado</p>
+  <h2 class="t">El gran universo de amor que has generado en mi 🪐</h2>
+  <p class="sub">Haz clic en cada planeta si puedes para descubrir el sentimiento que has causado en mi</p>
   <p class="code-hint" style="margin-bottom:16px">Código: <strong>LUNA</strong></p>
   <div id="universo"><div class="sol">☀️</div></div>
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- Modal planeta -->
 <div class="modal-bg hidden" id="modal-bg" onclick="cerrarModal()">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
@@ -83,11 +79,10 @@
   </div>
 </div>
 
-<!-- ═══ MÁQUINA DEL DESTINO ═══ -->
 <section id="sec-destino" class="sec hidden">
   <div class="dest-caja">
-    <h2 class="t">Máquina del Destino 🔮</h2>
-    <p class="sub" style="margin-bottom:4px">¿Qué nos reserva el universo?</p>
+    <h2 class="t">Máquina para ver todo nuestro destino 🔮</h2>
+    <p class="sub" style="margin-bottom:4px">¿Qué haremos en el tiempo que nos quede en este universo?</p>
     <p class="code-hint" style="margin-bottom:0">Código: <strong>ALMA</strong></p>
     <div class="dest-pantalla" id="dest-pantalla">
       <span style="opacity:.35;font-size:1.1rem">Presiona el botón...</span>
@@ -97,11 +92,10 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══ ESCAPE ROOM ═══ -->
 <section id="sec-escape" class="sec hidden">
   <div class="esc-caja">
     <h2 class="t">Escape Room 🗝️</h2>
-    <p class="sub" style="margin-bottom:4px">Resuelve cada pista para desbloquear el mensaje final</p>
+    <p class="sub" style="margin-bottom:4px">Resuelve cada pista para poder descubrir un pequeño secreto</p>
     <p class="code-hint" style="margin-bottom:20px">Código: <strong>ROSE</strong></p>
     <div class="prog-dots" id="prog-dots"></div>
     <div id="esc-juego">
@@ -111,10 +105,10 @@
     </div>
     <div id="esc-final" class="hidden" style="text-align:center;padding:10px 0">
       <div style="font-size:3rem;margin-bottom:18px">🎉💌🗝️</div>
-      <p style="font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--rosa3);margin-bottom:12px">¡Lo lograste!</p>
+      <p style="font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--rosa3);margin-bottom:12px">¡bien hecho culona!</p>
       <p style="font-family:'Great Vibes',cursive;font-size:1.7rem;color:rgba(255,255,255,.8);line-height:1.6">
-        La respuesta siempre eres tú.<br>
-        <span style="font-size:1.1rem;color:rgba(255,255,255,.55)">En cada pregunta, en cada camino,<br>en cada elección... eres tú.</span>
+        La respuesta siempre haz sido tú.<br>
+        <span style="font-size:1.1rem;color:rgba(255,255,255,.55)">En cada pregunta, en cada momento,<br>en cada elección... siempre eres tú.</span>
       </p>
       <button class="btn" style="margin-top:20px" onclick="reiniciarEscape()">Jugar de nuevo 🔄</button>
     </div>
@@ -122,16 +116,16 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══ IMPACTO ═══ -->
+
 <section id="sec-impacto" class="sec hidden">
   <h2 class="t">Tu Impacto en Mi Vida 📊</h2>
-  <p class="sub">Los números nunca mienten, mi amor</p>
+  <p class="sub">Aunque se te den mal los números, nunca mienten, amor.</p>
   <p class="code-hint" style="margin-bottom:22px">Código: <strong>VIDA</strong></p>
   <div class="imp-grid" id="imp-grid"></div>
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══ DECISIONES ═══ -->
+
 <section id="sec-decisiones" class="sec hidden">
   <div class="dec-caja">
     <h2 class="t">Si pudiera elegir... 💭</h2>
@@ -141,7 +135,6 @@
   <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══ FINAL SECRETO ═══ -->
 <section id="sec-final" class="sec hidden">
   <div class="final-wrap">
     <h2 class="t">Final Secreto 🔐</h2>
@@ -177,18 +170,20 @@
       <div class="carta-final" style="margin-bottom:14px">
         <div style="font-size:3.2rem;margin-bottom:18px">💌✨🌹</div>
         <h3>Para ti, mi Sharick</h3>
-        <p>Si llegaste hasta aquí, es porque eres exactamente la persona que imaginé leyendo esto: curiosa, juguetona, hermosa por dentro y por fuera.</p>
-        <p>Cada sección de este universo que construí la pensé para ti. Las estrellas tienen tu nombre, los planetas orbitan alrededor de lo que siento, y cada acertijo tenía una sola respuesta posible: tú.</p>
-        <p>No sé cuántos días más vamos a contar juntos, pero sé que quiero contarlos todos. Cada uno. Incluso los difíciles, porque terminan contigo y eso los convierte en los mejores días de mi vida.</p>
-        <p>Gracias por existir, por ser tú, por dejarme amarte.</p>
+        <p>Sabia que llegaras hasta aquí mi pequeña princesa después de todo, siempre has sido muy inteligente, aunque quizá pidas ayuda, quién sabe
+        Jajajaja, pero bueno, mi pequeña princesa, esto lo escribo principalmente porque quiero decirte que siempre serás mi pequeña princesa y estare hay
+        para todo lo que necesite También es para decir unas cosas; la lista va en 40 creo si no ha crecido desde que comenze a hacer los cambios en los textos jajaja y bueno mi 
+        pequeña princesa solo quiero ser mas honesto cada dia y poder demostrarte que mi amor por ti no se limita a lo corporal aunque aveces
+        parezca asi jajaja solo quiero decirte y hacerte sentir especial y que puedas ser mejor cada dia y que puedas vivir una vida incluso sin
+        mi en ella mi pequeña princesa y para finalizar esta carta solo quiero decirte te amo ya solo queda 1 mes o quizas menos quien sabe jaajja</p>
         <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--rosa3);margin-top:16px">
-          Con todo mi amor, Cristian 💕
+          Con todo mi amor,  Ricitos y no de oro 💕
         </p>
       </div>
 
       <div class="sep"></div>
 
-      <p class="extras-titulo">Hay aún más para ti... 🎁</p>
+      <p class="extras-titulo">Aún quedan cosas, mi amor... 🎁</p>
       <p class="extras-sub">Elige qué quieres explorar primero</p>
 
       <div class="extras-grid">
@@ -205,11 +200,10 @@
         <div class="extras-card" onclick="mostrarExtra('panel-razones')">
           <span class="e-ic">🌹</span>
           <h4>Razones por las que te amo</h4>
-          <p>Podría llenar un universo entero, pero aquí van algunas...</p>
+          <p>Podría llenar un universo entero con ellas, pero aquí hay unas pocas...</p>
         </div>
       </div>
 
-      <!-- PANEL: Collage -->
       <div id="panel-collage" class="panel-extra hidden" style="margin-top:30px;width:100%;text-align:center">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Nuestras Fotos 🖼️</p>
         <p class="extras-sub" style="margin-bottom:16px">Cada imagen guarda un recuerdo que atesoro</p>
@@ -221,10 +215,9 @@
         <button class="btn" style="margin-top:6px" onclick="cerrarExtra('panel-collage')">Cerrar 💫</button>
       </div>
 
-      <!-- PANEL: Ruleta -->
       <div id="panel-ruleta" class="panel-extra hidden" style="margin-top:30px;width:100%;text-align:center">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Ruleta del Amor 🎡</p>
-        <p class="extras-sub" style="margin-bottom:16px">Gírala las veces que quieras</p>
+        <p class="extras-sub" style="margin-bottom:16px">Siempre podrás volver a esta sección cuando sientas que necesitas de mí.</p>
         <div class="ruleta-caja">
           <div class="ruleta-rueda-wrap">
             <div class="ruleta-aguja">💘</div>
@@ -233,17 +226,16 @@
             </div>
           </div>
           <div class="ruleta-mensaje" id="ruleta-msg">
-            Presiona girar para recibir tu mensaje... ✨
+            Presiona girar para recibir una verdad ... ✨
           </div>
           <button class="btn-rosa" onclick="girarRuleta()" style="margin-top:16px;width:100%">💫 Girar</button>
         </div>
         <button class="btn" style="margin-top:8px" onclick="cerrarExtra('panel-ruleta')">Cerrar 💫</button>
       </div>
 
-      <!-- PANEL: Razones -->
       <div id="panel-razones" class="panel-extra hidden" style="margin-top:30px;width:100%;text-align:center">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Razones por las que te amo 🌹</p>
-        <p class="extras-sub" style="margin-bottom:16px">Podría llenar un universo entero, pero aquí van algunas...</p>
+        <p class="extras-sub" style="margin-bottom:16px">Podría llenar un universo entero con ellas, pero aquí hay unas pocas...</p>
         <div class="razones-grid" id="razones-grid"></div>
         <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-razones')">Cerrar 💫</button>
       </div>
@@ -253,6 +245,6 @@
   </div>
 </section>
 
-<script src="js/main.js"></script><!-- ← ERROR 3 CORREGIDO: faltaba cerrar </script> correctamente -->
+<script src="js/main.js"></script>
 </body>
 </html>
