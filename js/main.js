@@ -1,4 +1,3 @@
-
 (function () {
   const bg = document.getElementById('stars-bg');
   for (let i = 0; i < 130; i++) {
@@ -29,7 +28,7 @@ function crearC() {
 setInterval(crearC, 1100);
 for (let i = 0; i < 4; i++) setTimeout(crearC, i * 400);
 
-
+/* ── MÚSICA ── */
 let musicPlaying = false;
 const audio = document.getElementById('bg-music');
 audio.volume = 0.22;
@@ -48,7 +47,7 @@ function toggleMusic() {
   musicPlaying = !musicPlaying;
 }
 
-
+/* ── NAVEGACIÓN ── */
 function ir(id) {
   document.querySelectorAll('.sec').forEach(s => {
     s.style.opacity = '0';
@@ -67,20 +66,20 @@ function ir(id) {
   }, 300);
 }
 
-
+/* ── CONSTELACIÓN ── */
 const estrellas = [
   { x: .08, y: .18, msg: 'Esta constelación es una pequeña referencia porque gracias a ti he podido cambiar poco a poco en la vida y lograr ser una mejor persona, y lograste que este tonto apático fuera capaz de ser meloso y logre ser una supernova. 💙', nombre: 'C',  tipo: 'inicial' },
-  { x: .92, y: .18, msg: 'Esta sección es solo para recordarte que para mí siempre serás mi persona más importante y una gran estrella que vino a mi vida y  a iluminarla en todo momento y por eso solo queda decir: te amo, mi pequeña nalgona, jajaja.❤️', nombre: 'S',  tipo: 'inicial' },
-  { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó toda esta pequeña aventura que decidimos comenzar hace ya un año... ¿Quién diría que duraríamos tanto con tantos problemas, jajaaja? Pero eso solo significa que, si logramos un año, nos queda mucho más por delante, mi vida. 🗓️', nombre: '✦', tipo: 'fecha'   },
+  { x: .92, y: .18, msg: 'Esta sección es solo para recordarte que para mí siempre serás mi persona más importante y una gran estrella que vino a mi vida y a iluminarla en todo momento y por eso solo queda decir: te amo, mi pequeña nalgona, jajaja. ❤️', nombre: 'S',  tipo: 'inicial' },
+  { x: .5,  y: .06, msg: '27/04/2025 — El día que empezó toda esta pequeña aventura que decidimos comenzar hace ya un año... ¿Quién diría que duraríamos tanto con tantos problemas, jajaja? Pero eso solo significa que, si logramos un año, nos queda mucho más por delante, mi vida. 🗓️', nombre: '✦', tipo: 'fecha'   },
   { x: .42, y: .52, msg: 'Este pequeño corazón es para demostrar una pequeña parte de todo el amor que siento por ti; después de todo, una estrella es pequeña comparada con todo lo que te amo. 💖', nombre: '♡', tipo: 'corazon' },
   { x: .58, y: .52, msg: 'Siempre, siempre estaré ahí para ti, no importa qué suceda y lo que deje de suceder; siempre intentaré estar presente, no importa si esto acaba; ahí estaré presente. Después de todo, tú eres mi todo, mi vida. ❤️', nombre: '♡', tipo: 'corazon' },
-  { x: .38, y: .65, msg: ' Mi amor por ti es infinito; después de todo, no hay límites para lo que puedes hacer cuando sientes que alguien es capaz de darlo todo por ti también y, si no entendiste lo que dije, básicamente te amo, loquita. ∞', nombre: '♡', tipo: 'corazon' },
-  { x: .62, y: .65, msg: 'Juntos somos una locura, amor, aunque a ti te cueste más aceptar que debemos hacer las cosas mucho más juntos. Mi pequeña princesa, es necesario que lo repita, pero siempre que estemos juntos, somos invencibles, mi niña. ', nombre: '♡', tipo: 'corazon' },
+  { x: .38, y: .65, msg: 'Mi amor por ti es infinito; después de todo, no hay límites para lo que puedes hacer cuando sientes que alguien es capaz de darlo todo por ti también y, si no entendiste lo que dije, básicamente te amo, loquita. ∞', nombre: '♡', tipo: 'corazon' },
+  { x: .62, y: .65, msg: 'Juntos somos una locura, amor, aunque a ti te cueste más aceptar que debemos hacer las cosas mucho más juntos. Mi pequeña princesa, es necesario que lo repita, pero siempre que estemos juntos, somos invencibles, mi niña.', nombre: '♡', tipo: 'corazon' },
   { x: .5,  y: .78, msg: 'Todo esto inicia y termina en ti, mi pequeña princesa; tú eres la que decide y decidirá todo lo que conlleve lo nuestro, mi pequeña princesa, te amo. 🌹', nombre: '♡', tipo: 'corazon' },
   { x: .25, y: .35, msg: 'Tus nalgas, digo, digo, tu sonrisa siempre será la razón por la que me enamoré de ti, mi pequeña princesa, siempre que sigas teniendo esa gran sonrisa que es capaz de iluminar mi vida en cualquier momento, mi princesa culona. 😊', nombre: '★', tipo: 'normal'  },
-  { x: .75, y: .35, msg: 'Como verás más adelante, siempre seremos tú y yo en cada universo, mi pequeña princesa. Ojalá y se mantengan esas nalgas en cada universo, aunque sea un segundo plano comparado con tu sonrisa; es importante, mi vida, jajaja, ti amo, princesa. 🌌', nombre: '★', tipo: 'normal'  },
+  { x: .75, y: .35, msg: 'Como verás más adelante, siempre seremos tú y yo en cada universo, mi pequeña princesa. Ojalá se mantengan esas nalgas en cada universo, aunque sea un segundo plano comparado con tu sonrisa; es importante, mi vida, jajaja, ti amo, princesa. 🌌', nombre: '★', tipo: 'normal'  },
   { x: .15, y: .75, msg: 'Gracias por elegirme a mí para acompañarte en tu vida, mi pequeña princesa, y por cambiar tanto de gustarte la arepa a gustarte mi salchicha, jajajaja, porque sé que sigues odiando a todos los hombres fuera de mí. Ti amo, culona. 🥰', nombre: '★', tipo: 'normal'  },
-  { x: .85, y: .75, msg: 'Contigo el tiempo vuela, mi pequeña princesa; después de todo, cada momento contigo no es más que felicidad  y diversión, y aunque a veces parezca que el universo nos odia porque cuando estamos juntos va demasiado rápido, siempre será bueno, aunque sea poco. ⏳', nombre: '★', tipo: 'normal'  },
+  { x: .85, y: .75, msg: 'Contigo el tiempo vuela, mi pequeña princesa; después de todo, cada momento contigo no es más que felicidad y diversión, y aunque a veces parezca que el universo nos odia porque cuando estamos juntos va demasiado rápido, siempre será bueno, aunque sea poco. ⏳', nombre: '★', tipo: 'normal'  },
   { x: .5,  y: .45, msg: 'Tú eres el centro de todo lo que soy como persona e individuo. No importa qué pase ni qué pienses tú misma. Sé que piensas que me has hecho mucho daño, pero tú siempre serás mi princesa. Te amo, mi amor. 💫', nombre: '★', tipo: 'centro'  },
 ];
 const lineas = [
@@ -94,21 +93,17 @@ function dibujarConst() {
   const ctx = cv.getContext('2d');
   const W = cv.width, H = cv.height;
   ctx.clearRect(0, 0, W, H);
-
   const g = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*.65);
   g.addColorStop(0,'rgba(22,0,44,.85)');
   g.addColorStop(1,'rgba(4,0,12,.96)');
   ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-
   ctx.strokeStyle = 'rgba(255,105,180,.2)'; ctx.lineWidth = 1;
   lineas.forEach(([a,b]) => {
     const ea = estrellas[a], eb = estrellas[b];
     ctx.beginPath(); ctx.moveTo(ea.x*W, ea.y*H); ctx.lineTo(eb.x*W, eb.y*H); ctx.stroke();
   });
-
   const colMap = { inicial:'#ff69b4', fecha:'#ffd700', corazon:'#ff1493', centro:'#fff', normal:'#e0e0ff' };
   const rgbMap = { '#ff69b4':'255,105,180', '#ffd700':'255,215,0', '#ff1493':'255,20,147', '#fff':'255,255,255', '#e0e0ff':'224,224,255' };
-
   estrellas.forEach(e => {
     const x = e.x*W, y = e.y*H;
     const r = { inicial:13, fecha:11, centro:10, corazon:9, normal:7 }[e.tipo];
@@ -149,12 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
+/* ── UNIVERSO ── */
 const planetas = [
-  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.9, vel:11 },
-  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'Este planeta es una pequeña referencia de toda la confianza que has acumulado a lo largo de todo el tiempo que llevamos juntos. Después de todo lo que has hecho por este tonto, ha logrado que este planeta crezca cada día y esperemos lo haga más cada día', size:28, dist:.10, vel:18 },
-  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Este planeta es por cada recuerdo que tenemos juntos, cada momento especial, cada ft, cada risa, cada beso, cada cosa que dejaste. La pena por un momento siempre será especial y algo que crecerá cada día y podremos ampliarlo mucho más a futuro, mi niña linda.', size:35, dist:.12, vel:26 },
-  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Esta es una pequeña referencia: después de todo, tú eres y siempre serás esa pequeña sección de mi vida que siempre querré e intentaré que esté presente en todo lo importante; después de todo, tú eres mi estrella del mañana, pequeña princesa. .', size:42, dist:.23, vel:36 },
+  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti. Después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.30, vel:11 },
+  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'Este planeta es una pequeña referencia de toda la confianza que has acumulado a lo largo de todo el tiempo que llevamos juntos. Después de todo lo que has hecho por este tonto, ha logrado que este planeta crezca cada día y esperemos lo haga más cada día.', size:28, dist:.41, vel:18 },
+  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Este planeta es por cada recuerdo que tenemos juntos, cada momento especial, cada ft, cada risa, cada beso, cada cosa que dejaste. La pena por un momento siempre será especial y algo que crecerá cada día y podremos ampliarlo mucho más a futuro, mi niña linda.', size:35, dist:.51, vel:26 },
+  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Esta es una pequeña referencia: después de todo, tú eres y siempre serás esa pequeña sección de mi vida que siempre querré e intentaré que esté presente en todo lo importante; después de todo, tú eres mi estrella del mañana, pequeña princesa.', size:42, dist:.62, vel:36 },
 ];
 
 function buildUniverso() {
@@ -185,22 +180,22 @@ function abrirModal(p) {
 }
 function cerrarModal() { document.getElementById('modal-bg').classList.add('hidden'); }
 
-
+/* ── MÁQUINA DEL DESTINO ── */
 const frasesDest = [
   'Viajar juntos al fin del mundo 🌍',
   'Repetir esas noches solos 🔥',
-  'Tener mas fts de nuestros mejores momentos 📸',
+  'Tener más fts de nuestros mejores momentos 📸',
   'Terminar nuestra vida cumpliendo todo lo que soñamos ❤️',
   'Completar esa pequeña aventura a Disneyland 🗺️',
   'Estar una mañana juntos ☀️',
-  'Tener una casita con jardin con amber , el inutil y christopher 🏠',
-  'Crecer juntos y no perder esa magia qeu tenemos y que dejes la pena jajajaj ✨',
-  'Completar las listas de ambos ❤️‍🔥 ',
-  'Estar siempre el uno para el otro  💑',
+  'Tener una casita con jardín con Amber, el inútil y Christopher 🏠',
+  'Crecer juntos y no perder esa magia que tenemos, y que dejes la pena jajaja ✨',
+  'Completar las listas de ambos ❤️‍🔥',
+  'Estar siempre el uno para el otro 💑',
 ];
 let destIdx = 0;
 
-function girarDestino() {
+function girarDestino() {                          /* ← llave de apertura */
   const p = document.getElementById('dest-pantalla');
   p.style.opacity = '.3';
   let n = 0;
@@ -213,12 +208,14 @@ function girarDestino() {
     }
   }, 110);
   setTimeout(() => (p.style.opacity = '1'), 1700);
+}                                                  /* ← llave de cierre — CORREGIDO */
 
+/* ── ESCAPE ROOM ── */
 const pistas = [
-  { q:'¿Cuál es el ingrediente secreto de nuestra historia?',   ops:['El tiempo','Tus nalgas','La suerte','La distancia'],                    ok:1 },
-  { q:'Si nuestro amor fuera un lugar, ¿cuál sería?',           ops:['Una ciudad fría','Un lugar sin nombre','Donde estemos juntos','El pasado'], ok:2 },
-  { q:'¿Qué es lo que nunca cambiará entre nosotros?',          ops:['Nada','Las peleas','La distancia','Lo que sentimos'],                 ok:3 },
-  { q:'La respuesta a todo siempre es...',                      ops:['El tiempo','El azar','Tú','Cualquier cosa'],                          ok:2 },
+  { q:'¿Cuál es el ingrediente secreto de nuestra historia?',   ops:['El tiempo','Tus nalgas','La suerte','La distancia'],                         ok:1 },
+  { q:'Si nuestro amor fuera un lugar, ¿cuál sería?',           ops:['Una ciudad fría','Un lugar sin nombre','Donde estemos juntos','El pasado'],   ok:2 },
+  { q:'¿Qué es lo que nunca cambiará entre nosotros?',          ops:['Nada','Las peleas','La distancia','Lo que sentimos'],                         ok:3 },
+  { q:'La respuesta a todo siempre es...',                      ops:['El tiempo','El azar','Tú','Cualquier cosa'],                                  ok:2 },
 ];
 let pistaActual = 0;
 
@@ -267,14 +264,14 @@ function responder(idx, btn, cont) {
 }
 function reiniciarEscape() { iniciarEscape(); }
 
-
+/* ── IMPACTO ── */
 const impData = [
-  { lbl:'💛 Felicidad',        val:'+∞%',   pct:100, color:'linear-gradient(90deg,#ffd54f,#ff9800)' },
-  { lbl:'❤️ Amor',             val:'+1000%', pct:100, color:'linear-gradient(90deg,#ff1493,#c2185b)' },
-  { lbl:'😔 Tristeza',         val:'10%',   pct:10,  color:'linear-gradient(90deg,#7e57c2,#512da8)' },
-  { lbl:'☀️ Días buenos',      val:'+200%',  pct:95,  color:'linear-gradient(90deg,#ffcc02,#ff9800)' },
-  { lbl:'🌙 Noches tranquilas', val:'+300%', pct:88,  color:'linear-gradient(90deg,#4fc3f7,#1565c0)' },
-  { lbl:'🔥 Ganas de vivir',   val:'+500%',  pct:98,  color:'linear-gradient(90deg,#ff6e40,#ff1744)' },
+  { lbl:'💛 Felicidad',         val:'+∞%',   pct:100, color:'linear-gradient(90deg,#ffd54f,#ff9800)' },
+  { lbl:'❤️ Amor',              val:'+1000%', pct:100, color:'linear-gradient(90deg,#ff1493,#c2185b)' },
+  { lbl:'😔 Tristeza',          val:'10%',    pct:10,  color:'linear-gradient(90deg,#7e57c2,#512da8)' },
+  { lbl:'☀️ Días buenos',       val:'+200%',  pct:95,  color:'linear-gradient(90deg,#ffcc02,#ff9800)' },
+  { lbl:'🌙 Noches tranquilas', val:'+300%',  pct:88,  color:'linear-gradient(90deg,#4fc3f7,#1565c0)' },
+  { lbl:'🔥 Ganas de vivir',    val:'+500%',  pct:98,  color:'linear-gradient(90deg,#ff6e40,#ff1744)' },
 ];
 (function () {
   const g = document.getElementById('imp-grid');
@@ -294,10 +291,11 @@ function animarImpacto() {
   document.querySelectorAll('.imp-val').forEach(v => setTimeout(() => v.classList.add('vis'), 400));
 }
 
+/* ── DECISIONES ── */
 const arbol = [
-  { q:'Si pudiera elegir mil veces...',    ops:[{t:'Te elegiría',n:1},          {t:'Te elegiría otra vez',n:1}]    },
-  { q:'Y si el tiempo se reiniciara...',   ops:[{t:'Volvería a buscarte',n:2},  {t:'Esperaría a que llegaras',n:2}] },
-  { q:'Porque al final de todo...',        ops:[{t:'Eres mi persona favorita',n:3},{t:'Eres mi lugar seguro',n:3}] },
+  { q:'Si pudiera elegir mil veces...',  ops:[{t:'Te elegiría',n:1},           {t:'Te elegiría otra vez',n:1}]     },
+  { q:'Y si el tiempo se reiniciara...', ops:[{t:'Volvería a buscarte',n:2},   {t:'Esperaría a que llegaras',n:2}] },
+  { q:'Porque al final de todo...',      ops:[{t:'Eres mi persona favorita',n:3},{t:'Eres mi lugar seguro',n:3}]   },
   { res:'La respuesta siempre fuiste tú, Sharick. En cada universo, en cada versión de esta historia, en cada elección posible... siempre, siempre tú. 💕' },
 ];
 function cargarDec(idx) {
@@ -312,19 +310,20 @@ function cargarDec(idx) {
     <div class="dec-ops">${n.ops.map(o => `<button class="dec-btn" onclick="cargarDec(${o.n})">${o.t}</button>`).join('')}</div>`;
 }
 
+/* ── RULETA ── */
 const mensajesRuleta = [
-  'Tu sonrisa siempre iluminara mi vida ',
-  'Contigo cada día es mi favorito ',
-  'Eres la razón de mis mejores momentos ',
-  'Mi corazón siempre te va a elegir ',
-  'Eres la persona mas especial para mi ',
-  'Gracias por amarme como lo haces ',
-  'Contigo soy la versión más feliz de mí ',
-  'Eres mi lugar favorito del universo ',
-  'Tu risa es la melodía más bonita ',
-  'Tus nalgas y tu sonrisa siempre seran mi regalo favorito ',
-  'Tus nalgas siempre seran lo que siempre soñe',
-  'Te amo mas de lo que puedo llegar a explicar ',
+  'Tu sonrisa siempre iluminará mi vida 🌟',
+  'Contigo cada día es mi favorito 💕',
+  'Eres la razón de mis mejores momentos 🌹',
+  'Mi corazón siempre te va a elegir 💖',
+  'Eres la persona más especial para mí 🥰',
+  'Gracias por amarme como lo haces 💝',
+  'Contigo soy la versión más feliz de mí 🌸',
+  'Eres mi lugar favorito del universo 🏠',
+  'Tu risa es la melodía más bonita ✨',
+  'Tus nalgas y tu sonrisa siempre serán mi regalo favorito 🎁',
+  'Tus nalgas siempre serán lo que siempre soñé 💫',
+  'Te amo más de lo que puedo llegar a explicar ❤️',
 ];
 const emojisRuleta = ['💖','🌹','✨','💕','🥰','💝','🌸','💫','❤️','🎀','🌟','💘'];
 let ruletaGirando = false;
@@ -353,16 +352,16 @@ function girarRuleta() {
   }, 3600);
 }
 
-
+/* ── RAZONES ── */
 const razonesData = [
-  { ic:'😊', titulo:'Tu sonrisa',        texto:'Cuando sonríes el mundo entero tiene más brillo. No hay nada igual en este univers.' },
+  { ic:'😊', titulo:'Tu sonrisa',        texto:'Cuando sonríes el mundo entero tiene más brillo. No hay nada igual en este universo.' },
   { ic:'🫂', titulo:'Tu abrazo',          texto:'En tus brazos siempre encuentro el lugar más seguro y cálido que existe.' },
-  { ic:'💬', titulo:'Tu forma de hablar', texto:'Puedo escucharte hablar horas y horas y siempre querer más. Eres increible pequeña doctora.' },
+  { ic:'💬', titulo:'Tu forma de hablar', texto:'Puedo escucharte hablar horas y horas y siempre querer más. Eres increíble, pequeña doctora.' },
   { ic:'💪', titulo:'Tu fortaleza',       texto:'Admiro profundamente lo valiente que eres. Enfrentas la vida con una fuerza que me inspira.' },
   { ic:'🎨', titulo:'Tu creatividad',     texto:'Todo lo que tocas lo conviertes en algo hermoso. Tienes un talento único para hacer magia.' },
   { ic:'🌙', titulo:'Tu corazón',         texto:'Tienes el corazón más bonito que he conocido. Tu bondad me hace mejor persona cada día.' },
-  { ic:'🤣', titulo:'Tus nalgas',         texto:'Aunque menos romántico, no puedo evitar recalcarlo: tus nalgas siempre harán que te ame y te siga amando cada día, mi vida preciosa..' },
-  { ic:'🌟', titulo:'Tu luz',             texto:'Entras a un lugar y lo iluminas todo sin siquiera intentarlo. Eres luz pura, Princesita culona.' },
+  { ic:'🤣', titulo:'Tus nalgas',         texto:'Aunque menos romántico, no puedo evitar recalcarlo: tus nalgas siempre harán que te ame y te siga amando cada día, mi vida preciosa.' },
+  { ic:'🌟', titulo:'Tu luz',             texto:'Entras a un lugar y lo iluminas todo sin siquiera intentarlo. Eres luz pura, princesita culona.' },
   { ic:'🧠', titulo:'Tu inteligencia',    texto:'Eres brillante. Me sorprendes constantemente con lo que piensas y cómo ves el mundo.' },
 ];
 
@@ -381,7 +380,7 @@ function buildRazones() {
   });
 }
 
-
+/* ── CÓDIGOS FINALES ── */
 const CODES = ['STAR','LUNA','ALMA','ROSE','VIDA','EVER'];
 const found = new Set();
 
@@ -437,7 +436,7 @@ sLluvia.textContent = `@keyframes finLluvia{
   to{transform:translateY(-125vh) rotate(720deg);opacity:0}}`;
 document.head.appendChild(sLluvia);
 
-
+/* ── EXTRAS POST-DESBLOQUEO ── */
 function mostrarExtra(id) {
   document.querySelectorAll('.panel-extra').forEach(p => p.classList.add('hidden'));
   const panel = document.getElementById(id);
@@ -456,6 +455,7 @@ function cerrarExtra(id) {
   document.getElementById(id).classList.add('hidden');
 }
 
+/* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('sec-menu').style.opacity = '1';
 });
