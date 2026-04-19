@@ -153,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 const planetas = [
-  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.10, vel:11 },
-  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'En este planeta construimos todo. La confianza que me das es el aire que respiro y nunca la daré por sentada.',              size:38, dist:.41, vel:18 },
-  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Cada foto, cada risa, cada momento compartido vive aquí. Este planeta se hace más grande con el tiempo.',                    size:35, dist:.51, vel:26 },
-  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Todo lo que quiero vivir contigo. Los viajes, los proyectos, los sueños. El futuro tiene tu nombre.',                       size:42, dist:.62, vel:36 },
+  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.9, vel:11 },
+  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'En este planeta construimos todo. La confianza que me das es el aire que respiro y nunca la daré por sentada.', size:18, dist:.10, vel:18 },
+  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Cada foto, cada risa, cada momento compartido vive aquí. Este planeta se hace más grande con el tiempo.', size:35, dist:.12, vel:26 },
+  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Todo lo que quiero vivir contigo. Los viajes, los proyectos, los sueños. El futuro tiene tu nombre.', size:42, dist:.23, vel:36 },
 ];
 
 function buildUniverso() {
