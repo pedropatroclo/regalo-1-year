@@ -146,10 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── UNIVERSO ── */
 const planetas = [
-  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti. Después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.30, vel:11 },
-  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'Este planeta es una pequeña referencia de toda la confianza que has acumulado a lo largo de todo el tiempo que llevamos juntos. Después de todo lo que has hecho por este tonto, ha logrado que este planeta crezca cada día y esperemos lo haga más cada día.', size:28, dist:.41, vel:18 },
-  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Este planeta es por cada recuerdo que tenemos juntos, cada momento especial, cada ft, cada risa, cada beso, cada cosa que dejaste. La pena por un momento siempre será especial y algo que crecerá cada día y podremos ampliarlo mucho más a futuro, mi niña linda.', size:35, dist:.51, vel:26 },
-  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Esta es una pequeña referencia: después de todo, tú eres y siempre serás esa pequeña sección de mi vida que siempre querré e intentaré que esté presente en todo lo importante; después de todo, tú eres mi estrella del mañana, pequeña princesa.', size:42, dist:.62, vel:36 },
+  { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti. Después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.20, vel:11 },
+  { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'Este planeta es una pequeña referencia de toda la confianza que has acumulado a lo largo de todo el tiempo que llevamos juntos. Después de todo lo que has hecho por este tonto, ha logrado que este planeta crezca cada día y esperemos lo haga más cada día.', size:28, dist:.31, vel:18 },
+  { ic:'📸', nombre:'Recuerdos', color:'#ffd54f', desc:'Este planeta es por cada recuerdo que tenemos juntos, cada momento especial, cada ft, cada risa, cada beso, cada cosa que dejaste. La pena por un momento siempre será especial y algo que crecerá cada día y podremos ampliarlo mucho más a futuro, mi niña linda.', size:35, dist:.21, vel:26 },
+  { ic:'🌅', nombre:'Futuro',    color:'#a5d6a7', desc:'Esta es una pequeña referencia: después de todo, tú eres y siempre serás esa pequeña sección de mi vida que siempre querré e intentaré que esté presente en todo lo importante; después de todo, tú eres mi estrella del mañana, pequeña princesa.', size:42, dist:.32, vel:36 },
 ];
 
 function buildUniverso() {
