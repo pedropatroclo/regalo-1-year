@@ -63,6 +63,15 @@ function verificarClave() {
         iniciarContador();
       }, 60);
     }, 700);
+    // Arrancar música automáticamente al entrar (el clic cuenta como interacción)
+    setTimeout(() => {
+      audio.play().then(() => {
+        musicPlaying = true;
+        const btn = document.getElementById('music-btn');
+        btn.textContent = '🎶';
+        btn.classList.add('playing');
+      }).catch(() => {});
+    }, 800);
   } else {
     const err = document.getElementById('carga-err');
     err.classList.remove('hidden');
