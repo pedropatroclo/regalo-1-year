@@ -9,73 +9,112 @@
 </head>
 <body>
 
+<!-- ═══════════════════ PANTALLA DE CARGA ═══════════════════ -->
+<div id="pantalla-carga">
+  <div class="carga-inner">
+    <div class="carga-corazon">💜</div>
+    <h1 class="carga-titulo">Nuestro rincón del universo</h1>
+    <p class="carga-sub">Ingresa la contraseña para entrar</p>
+    <div class="carga-inputs">
+      <input class="carga-input" id="ci1" type="text" maxlength="2" placeholder="DD" oninput="avanzarCarga(this,'ci2',2)">
+      <span class="carga-guion">-</span>
+      <input class="carga-input" id="ci2" type="text" maxlength="1" placeholder="M" oninput="avanzarCarga(this,'ci3',1)">
+      <span class="carga-guion">-</span>
+      <input class="carga-input" id="ci3" type="text" maxlength="2" placeholder="AA" oninput="avanzarCarga(this,null,2)">
+    </div>
+    <button class="carga-btn" onclick="verificarClave()">Entrar ✨</button>
+    <p class="carga-err hidden" id="carga-err">❌ Contraseña incorrecta, inténtalo de nuevo</p>
+  </div>
+</div>
+
 <div id="stars-bg"></div>
-<div id="music-btn" onclick="toggleMusic()" title="Música de fondo">🎵</div>
+<div id="music-btn" onclick="toggleMusic()" title="Música">🎵</div>
+
+<!-- Audio: reemplaza el src con la ruta de tu archivo de Lover de Taylor Swift -->
 <audio id="bg-music" loop>
+  <source src="audio/lover.mp3" type="audio/mpeg">
   <source src="audio/nuestra-cancion.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Sonidos de UI -->
+<audio id="snd-unlock" preload="auto">
+  <source src="audio/unlock.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-ring" preload="auto">
+  <source src="audio/ring.mp3" type="audio/mpeg">
 </audio>
 
 <!-- ═══ MENÚ ═══ -->
 <section id="sec-menu" class="sec" style="opacity:0">
-  <h2 class="t">Mi linda princesa 💫</h2>
-  <p class="sub">Esta pequeña sección está hecha para que puedas ver y sentir un poco de la obsesión que siento por ti</p>
+  <div class="menu-header">
+    <div class="menu-corazon-anim">💜</div>
+    <h2 class="t">Mi linda princesa 💫</h2>
+    <p class="sub">Esta pequeña sección está hecha para que puedas ver y sentir un poco de la obsesión que siento por ti</p>
+    <div class="contador-juntos" id="contador-juntos"></div>
+  </div>
   <div class="menu-grid">
     <div class="menu-card" onclick="ir('sec-constelacion')">
       <span class="ic">✨</span>
-      <h3>Nuestra Constelación ❤️</h3>
-      <p>Toca cada estrella para descubrir las estrellas de amor que has hecho en mí 💫</p>
+      <h3>Nuestra Constelación</h3>
+      <p>Toca cada estrella para descubrir los mensajes de amor que has dejado en mí 💫</p>
+      <span class="card-arrow">→</span>
     </div>
     <div class="menu-card" onclick="ir('sec-universo')">
       <span class="ic">🪐</span>
-      <h3>Nuestro Universo ❤️</h3>
+      <h3>Nuestro Universo</h3>
       <p>Cada planeta representa algo de lo que somos juntos, mi niña</p>
+      <span class="card-arrow">→</span>
     </div>
     <div class="menu-card" onclick="ir('sec-destino')">
       <span class="ic">🔮</span>
       <h3>Máquina del Destino</h3>
       <p>Descubre lo que haremos a futuro, pequeña princesa</p>
+      <span class="card-arrow">→</span>
     </div>
     <div class="menu-card" onclick="ir('sec-escape')">
       <span class="ic">🗝️</span>
       <h3>Escape Room</h3>
       <p>Resuélvelo, mija, demuestra que aparte de médica eres detective jajaja</p>
+      <span class="card-arrow">→</span>
     </div>
     <div class="menu-card" onclick="ir('sec-impacto')">
       <span class="ic">📊</span>
       <h3>Tu Impacto en Mi Vida</h3>
       <p>Aunque se te den mal los números, nunca mienten, amor.</p>
+      <span class="card-arrow">→</span>
     </div>
     <div class="menu-card" onclick="ir('sec-decisiones')">
       <span class="ic">💭</span>
       <h3>Juego de Decisiones</h3>
       <p>Si pudiera elegir mil veces...</p>
+      <span class="card-arrow">→</span>
     </div>
-    <div class="menu-card" onclick="ir('sec-final')"
-         style="border-color:rgba(124,58,237,.35);background:rgba(124,58,237,.05)">
+    <div class="menu-card menu-card-especial" onclick="ir('sec-final')">
       <span class="ic">🔐</span>
       <h3>Final Secreto</h3>
-      <p>Recoge los 6 códigos de cada sección y desbloquea la carta definitiva</p>
+      <p>Recoge los 6 códigos y desbloquea la carta definitiva</p>
+      <span class="card-arrow">→</span>
     </div>
   </div>
 </section>
 
 <!-- ═══ CONSTELACIÓN ═══ -->
 <section id="sec-constelacion" class="sec hidden">
-  <h2 class="t">❤️ Nuestra Constelación, pequeña princesa ✨</h2>
-  <p class="sub">Toca cada estrella para descubrir las estrellas de amor que has hecho en mí 💫</p>
-  <p class="code-hint" style="margin-bottom:18px">Código de esta sección: <strong>STAR</strong></p>
+  <h2 class="t">❤️ Nuestra Constelación ✨</h2>
+  <p class="sub">Toca cada estrella para descubrir los mensajes de amor 💫</p>
+  <p class="code-hint" style="margin-bottom:18px">Código: <strong>STAR</strong></p>
   <canvas id="cv-const" width="660" height="400"></canvas>
   <div class="tooltip-e" id="ttip"></div>
-  <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
+  <button class="btn btn-volver" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
 <!-- ═══ UNIVERSO ═══ -->
 <section id="sec-universo" class="sec hidden">
-  <h2 class="t">El gran universo de amor que has generado en mí 🪐</h2>
+  <h2 class="t">El universo de amor que has generado en mí 🪐</h2>
   <p class="sub">Haz clic en cada planeta para descubrir el sentimiento que has causado en mí</p>
   <p class="code-hint" style="margin-bottom:16px">Código: <strong>LUNA</strong></p>
-  <div id="universo"><div class="sol">☀️</div></div>
-  <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
+  <div id="universo"><div class="sol">💜</div></div>
+  <button class="btn btn-volver" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
 <!-- Modal planeta -->
@@ -92,22 +131,22 @@
 <!-- ═══ DESTINO ═══ -->
 <section id="sec-destino" class="sec hidden">
   <div class="dest-caja">
-    <h2 class="t">Máquina para ver todo nuestro destino 🔮</h2>
+    <h2 class="t">Máquina del Destino 🔮</h2>
     <p class="sub" style="margin-bottom:4px">¿Qué haremos en el tiempo que nos quede en este universo?</p>
     <p class="code-hint" style="margin-bottom:0">Código: <strong>ALMA</strong></p>
     <div class="dest-pantalla" id="dest-pantalla">
       <span style="opacity:.35;font-size:1.1rem">Presiona el botón...</span>
     </div>
-    <button class="btn-rosa" onclick="girarDestino()" style="width:100%">🔮 Descubrir nuestro destino</button>
+    <button class="btn-principal" onclick="girarDestino()">🔮 Descubrir nuestro destino</button>
   </div>
-  <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
+  <button class="btn btn-volver" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
 <!-- ═══ ESCAPE ROOM ═══ -->
 <section id="sec-escape" class="sec hidden">
   <div class="esc-caja">
     <h2 class="t">Escape Room 🗝️</h2>
-    <p class="sub" style="margin-bottom:4px">Resuelve cada pista para poder descubrir un pequeño secreto</p>
+    <p class="sub" style="margin-bottom:4px">Resuelve cada pista para descubrir un pequeño secreto</p>
     <p class="code-hint" style="margin-bottom:20px">Código: <strong>ROSE</strong></p>
     <div class="prog-dots" id="prog-dots"></div>
     <div id="esc-juego">
@@ -117,7 +156,7 @@
     </div>
     <div id="esc-final" class="hidden" style="text-align:center;padding:10px 0">
       <div style="font-size:3rem;margin-bottom:18px">🎉💌🗝️</div>
-      <p style="font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--rosa3);margin-bottom:12px">¡Bien hecho, culona! 🎉</p>
+      <p style="font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--azul3);margin-bottom:12px">¡Bien hecho, culona! 🎉</p>
       <p style="font-family:'Great Vibes',cursive;font-size:1.7rem;color:rgba(255,255,255,.8);line-height:1.6">
         La respuesta siempre has sido tú.<br>
         <span style="font-size:1.1rem;color:rgba(255,255,255,.55)">En cada pregunta, en cada momento,<br>en cada elección... siempre eres tú.</span>
@@ -125,7 +164,7 @@
       <button class="btn" style="margin-top:20px" onclick="reiniciarEscape()">Jugar de nuevo 🔄</button>
     </div>
   </div>
-  <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
+  <button class="btn btn-volver" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
 <!-- ═══ IMPACTO ═══ -->
@@ -134,7 +173,7 @@
   <p class="sub">Aunque se te den mal los números, nunca mienten, amor.</p>
   <p class="code-hint" style="margin-bottom:22px">Código: <strong>VIDA</strong></p>
   <div class="imp-grid" id="imp-grid"></div>
-  <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
+  <button class="btn btn-volver" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
 <!-- ═══ DECISIONES ═══ -->
@@ -144,19 +183,18 @@
     <p class="code-hint" style="margin-bottom:22px">Código: <strong>EVER</strong></p>
     <div id="dec-juego"></div>
   </div>
-  <button class="btn" onclick="ir('sec-menu')">← Volver al menú</button>
+  <button class="btn btn-volver" onclick="ir('sec-menu')">← Volver al menú</button>
 </section>
 
-<!-- ═══ FINAL SECRETO ═══ -->
+<!-- ═══════════════════ FINAL SECRETO ═══════════════════ -->
 <section id="sec-final" class="sec hidden">
   <div class="final-wrap">
-    <h2 class="t">Final Secreto 🔐</h2>
+    <h2 class="t glow-fuerte">Final Secreto 🔐</h2>
     <p class="sub">Ingresa los 6 códigos que encontraste en cada sección</p>
 
+    <!-- Zona de códigos -->
     <div id="vista-cod">
-      <p style="font-family:'Cinzel',serif;letter-spacing:2px;font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:12px">
-        CÓDIGOS ENCONTRADOS
-      </p>
+      <p style="font-family:'Cinzel',serif;letter-spacing:2px;font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:12px">CÓDIGOS ENCONTRADOS</p>
       <div class="badges" id="badges">
         <span style="color:rgba(255,255,255,.28);font-size:.88rem">Aún ninguno...</span>
       </div>
@@ -164,16 +202,15 @@
         <input class="cod-input" id="cod-input" type="text" placeholder="Escribe el código"
           maxlength="4" oninput="this.value=this.value.toUpperCase()"
           onkeydown="if(event.key==='Enter')agregarCod()">
-        <button class="btn-rosa" style="padding:13px 28px;font-size:1.1rem" onclick="agregarCod()">Agregar</button>
+        <button class="btn-principal" onclick="agregarCod()">Agregar</button>
       </div>
       <p class="err-msg hidden" id="err-msg">❌ Código incorrecto o ya usado</p>
       <div style="margin-top:28px">
         <p style="color:rgba(255,255,255,.45);margin-bottom:14px;font-size:.95rem">
           Necesitas los 6 códigos para desbloquear la carta final.<br>
-          <span id="conteo-cod" style="color:var(--rosa3);font-family:'Cinzel',serif;letter-spacing:1px">0 / 6 encontrados</span>
+          <span id="conteo-cod" style="color:var(--azul3);font-family:'Cinzel',serif;letter-spacing:1px">0 / 6 encontrados</span>
         </p>
-        <button class="btn-rosa" id="btn-desbloquear" onclick="desbloquear()" disabled
-          style="opacity:.38;cursor:not-allowed">
+        <button class="btn-principal btn-desbloquear-glow" id="btn-desbloquear" onclick="desbloquear()" disabled>
           🔐 Desbloquear Carta Final
         </button>
       </div>
@@ -182,29 +219,34 @@
     <!-- Contenido desbloqueado -->
     <div id="contenido-desbloqueado" class="hidden">
 
+      <!-- Botón volver a buscar códigos -->
+      <button class="btn btn-volver-codigos" onclick="volverACodigos()">🔑 Buscar más códigos</button>
+
+      <!-- Carta final -->
       <div class="carta-final" style="margin-bottom:14px">
         <div style="font-size:3.2rem;margin-bottom:18px">💌✨🌹</div>
         <h3>Para ti, mi Sharick</h3>
-        <p>
-          Sabía que llegarías hasta aquí, mi pequeña princesa. Después de todo,
-          siempre has sido muy inteligente, aunque quizá pidas ayuda, quién sabe... jajaja.
-          Pero bueno, mi pequeña princesa, esto lo escribo principalmente porque quiero
-          decirte que siempre serás mi pequeña princesa y estaré ahí para todo lo que necesites.
-          También es para decir unas cosas: la lista va en 40, creo, si no ha crecido desde que
-          comencé a hacer los cambios en los textos jajaja. Y bueno, mi pequeña princesa,
-          solo quiero ser más honesto cada día y poder demostrarte que mi amor por ti no se
-          limita a lo corporal, aunque a veces parezca así jajaja. Solo quiero decirte y hacerte
-          sentir especial, y que puedas ser mejor cada día y vivir una vida plena,
-          incluso sin mí en ella. Y para finalizar esta carta solo quiero decirte:
-          te amo. Ya solo queda 1 mes o quizás menos, quién sabe jajaja, y la lista va en 45.
-        </p>
-        <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--rosa3);margin-top:16px">
-          Con todo mi amor, Ricitos (y no de oro) 💕
-        </p>
+        <p>Sabía que llegarías hasta aquí, mi pequeña princesa. Después de todo, siempre has sido muy inteligente, aunque quizá pidas ayuda, quién sabe... jajaja. Pero bueno, mi pequeña princesa, esto lo escribo principalmente porque quiero decirte que siempre serás mi pequeña princesa y estaré ahí para todo lo que necesites. También es para decir unas cosas: la lista va en 40, creo, si no ha crecido desde que comencé a hacer los cambios en los textos jajaja. Y bueno, mi pequeña princesa, solo quiero ser más honesto cada día y poder demostrarte que mi amor por ti no se limita a lo corporal, aunque a veces parezca así jajaja. Solo quiero decirte y hacerte sentir especial, y que puedas ser mejor cada día y vivir una vida plena, incluso sin mí en ella. Y para finalizar esta carta solo quiero decirte: te amo. Ya solo queda 1 mes o quizás menos, quién sabe jajaja, y la lista va en 45.</p>
+        <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--azul3);margin-top:16px">Con todo mi amor, Ricitos (y no de oro) 💕</p>
       </div>
 
       <div class="sep"></div>
 
+      <!-- Cuenta regresiva -->
+      <div class="cuenta-regresiva-wrap">
+        <p class="extras-titulo">El día que nos volveremos a ver 📅</p>
+        <p class="extras-sub">Cuenta regresiva hasta el 12 de junio de 2026</p>
+        <div class="cuenta-grid" id="cuenta-grid">
+          <div class="cuenta-bloque"><span class="cuenta-num" id="cr-dias">--</span><span class="cuenta-label">días</span></div>
+          <div class="cuenta-bloque"><span class="cuenta-num" id="cr-horas">--</span><span class="cuenta-label">horas</span></div>
+          <div class="cuenta-bloque"><span class="cuenta-num" id="cr-min">--</span><span class="cuenta-label">minutos</span></div>
+          <div class="cuenta-bloque"><span class="cuenta-num" id="cr-seg">--</span><span class="cuenta-label">segundos</span></div>
+        </div>
+      </div>
+
+      <div class="sep"></div>
+
+      <!-- Extras -->
       <p class="extras-titulo">Aún quedan cosas, mi amor... 🎁</p>
       <p class="extras-sub">Elige qué quieres explorar primero</p>
 
@@ -222,24 +264,34 @@
         <div class="extras-card" onclick="mostrarExtra('panel-razones')">
           <span class="e-ic">🌹</span>
           <h4>Razones por las que te amo</h4>
-          <p>Podría llenar un universo entero con ellas, pero aquí hay unas pocas...</p>
+          <p>Podría llenar un universo entero con ellas...</p>
+        </div>
+        <div class="extras-card extras-card-anillo" onclick="mostrarExtra('panel-anillo')">
+          <span class="e-ic">💍</span>
+          <h4>Una pregunta especial</h4>
+          <p>Algo que llevo tiempo queriendo preguntarte...</p>
+        </div>
+        <div class="extras-card extras-card-bloqueada" onclick="verificarCumple()">
+          <span class="e-ic">🔒</span>
+          <h4>Para cuando cumplas</h4>
+          <p id="cumple-aviso">Disponible el 8 de octubre de 2026</p>
         </div>
       </div>
 
       <!-- PANEL: Collage -->
-      <div id="panel-collage" class="panel-extra hidden" style="margin-top:30px;width:100%;text-align:center">
+      <div id="panel-collage" class="panel-extra hidden">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Nuestras Fotos 🖼️</p>
         <p class="extras-sub" style="margin-bottom:16px">Cada imagen guarda un recuerdo que atesoro</p>
         <div class="collage-triangulo">
-          <img class="collage-img" src="img/nosotros4.png" alt="Nosotros en otro universo">
-          <img class="collage-img" src="img/nosotros.jpg"  alt="Nosotros en un pequeño momento">
-          <img class="collage-img" src="img/nosotros2.jpg" alt="Mis razones para hacer esto">
+          <img class="collage-img" src="img/nosotros4.png" alt="Nosotros">
+          <img class="collage-img" src="img/nosotros.jpg"  alt="Nosotros">
+          <img class="collage-img" src="img/nosotros2.jpg" alt="Nosotros">
         </div>
-        <button class="btn" style="margin-top:6px" onclick="cerrarExtra('panel-collage')">Cerrar 💫</button>
+        <button class="btn" onclick="cerrarExtra('panel-collage')">Cerrar 💫</button>
       </div>
 
       <!-- PANEL: Ruleta -->
-      <div id="panel-ruleta" class="panel-extra hidden" style="margin-top:30px;width:100%;text-align:center">
+      <div id="panel-ruleta" class="panel-extra hidden">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Ruleta del Amor 🎡</p>
         <p class="extras-sub" style="margin-bottom:16px">Siempre podrás volver aquí cuando sientas que me necesitas.</p>
         <div class="ruleta-caja">
@@ -249,27 +301,95 @@
               <span class="ruleta-emoji" id="ruleta-emoji">💖</span>
             </div>
           </div>
-          <div class="ruleta-mensaje" id="ruleta-msg">
-            Presiona girar para recibir una verdad... ✨
-          </div>
-          <button class="btn-rosa" onclick="girarRuleta()" style="margin-top:16px;width:100%">💫 Girar</button>
+          <div class="ruleta-mensaje" id="ruleta-msg">Presiona girar para recibir una verdad... ✨</div>
+          <button class="btn-principal" onclick="girarRuleta()" style="margin-top:16px;width:100%">💫 Girar</button>
         </div>
-        <button class="btn" style="margin-top:8px" onclick="cerrarExtra('panel-ruleta')">Cerrar 💫</button>
+        <button class="btn" onclick="cerrarExtra('panel-ruleta')">Cerrar 💫</button>
       </div>
 
       <!-- PANEL: Razones -->
-      <div id="panel-razones" class="panel-extra hidden" style="margin-top:30px;width:100%;text-align:center">
+      <div id="panel-razones" class="panel-extra hidden">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Razones por las que te amo 🌹</p>
-        <p class="extras-sub" style="margin-bottom:16px">Podría llenar un universo entero con ellas, pero aquí hay unas pocas...</p>
+        <p class="extras-sub" style="margin-bottom:16px">Podría llenar un universo entero con ellas...</p>
         <div class="razones-grid" id="razones-grid"></div>
         <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-razones')">Cerrar 💫</button>
       </div>
 
-      <button class="btn" style="margin-top:28px" onclick="ir('sec-menu')">← Volver al inicio</button>
-    </div>
+      <!-- PANEL: Anillo -->
+      <div id="panel-anillo" class="panel-extra hidden">
+        <p class="extras-titulo" style="font-size:clamp(1.6rem,5vw,2.8rem);margin-top:0;margin-bottom:10px">Una pregunta especial 💍</p>
+        <div class="anillo-wrap" id="anillo-wrap">
+          <div class="cajita-anillo" id="cajita-anillo" onclick="abrirCajita()">
+            <div class="cajita-tapa" id="cajita-tapa">
+              <div class="cajita-bisagra"></div>
+            </div>
+            <div class="cajita-base">
+              <div class="anillo-inside hidden" id="anillo-inside">💍</div>
+            </div>
+            <p class="cajita-hint" id="cajita-hint">Toca para abrir</p>
+          </div>
+          <div class="anillo-pregunta hidden" id="anillo-pregunta">
+            <p class="anillo-texto">¿Estás dispuesta a aceptar una vida junto a mí?</p>
+            <div class="anillo-botones">
+              <button class="btn-anillo btn-si" onclick="aceptarAnillo()">Sí 💜</button>
+              <button class="btn-anillo btn-si2" onclick="aceptarAnillo()">¡Claro que sí! 💖</button>
+            </div>
+          </div>
+        </div>
+        <button class="btn" style="margin-top:20px" onclick="cerrarExtra('panel-anillo')">Cerrar 💫</button>
+      </div>
 
+      <!-- PANEL: Para cuando cumplas (bloqueado) -->
+      <div id="panel-cumple" class="panel-extra hidden">
+        <p class="extras-titulo" style="font-size:clamp(1.6rem,5vw,2.8rem);margin-top:0;margin-bottom:10px">🎂 Para cuando cumplas</p>
+        <div class="cumple-contenido">
+          <div style="font-size:4rem;margin-bottom:20px">🎁🌟🎂</div>
+          <p style="font-family:'Great Vibes',cursive;font-size:2rem;color:var(--azul3);margin-bottom:16px">Mi pequeña princesa cumpleañera</p>
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:14px">
+            Hoy cumples un año más de vida y quiero que sepas que cada día que pasa me alegra más que hayas nacido. No sabes lo que significa para mí que existas en este mundo, que seas parte de mi vida y que me hayas permitido amarte.
+          </p>
+          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:14px">
+            Espero que este cumpleaños esté lleno de todo lo que mereces: risas, sorpresas y momentos que guardes en el corazón para siempre.
+          </p>
+          <p style="font-family:'Great Vibes',cursive;font-size:2rem;color:var(--azul3)">Feliz cumpleaños, mi pequeña princesa culona. Te amo. 💜</p>
+        </div>
+        <button class="btn" onclick="cerrarExtra('panel-cumple')">Cerrar 💫</button>
+      </div>
+
+      <button class="btn btn-volver" style="margin-top:28px" onclick="ir('sec-menu')">← Volver al inicio</button>
+    </div>
   </div>
 </section>
+
+<!-- ═══ PANTALLA FINAL POST-ANILLO ═══ -->
+<section id="sec-final-amor" class="sec hidden">
+  <div class="final-amor-wrap">
+    <div class="final-amor-emoji">💜✨💍</div>
+    <h2 class="t glow-fuerte" style="font-size:clamp(2.8rem,10vw,5.5rem)">Para siempre contigo</h2>
+    <div class="final-amor-texto">
+      <p>Mi pequeña princesa, si llegaste hasta aquí es porque eres exactamente lo que imaginé: valiente, curiosa, hermosa y mía. Quiero que sepas que no es una promesa vacía ni una frase bonita para este momento. Es una decisión que tomé desde el día que te elegí, y que sigo tomando cada mañana que me levanto pensando en ti.</p>
+      <p>Quiero estar ahí cuando te gradúes y la veas primera vez con tu bata de médica. Quiero celebrar contigo cada pequeño triunfo que parezca insignificante para el mundo pero que para mí es un universo entero. Quiero ser el primero que sepa cuando algo malo pase, y el último que se entere de tus secretos cuando decidas contármelos todos.</p>
+      <p>Quiero pelear contigo por cosas tontas y reconciliarnos antes de que acabe el día. Quiero ver esa sonrisa tuya que ilumina cualquier cuarto oscuro. Quiero escucharte reír de esa manera que solo tú tienes, esa que me hace olvidar cualquier cosa mala que haya pasado ese día.</p>
+      <p>Quiero viajes largos y noches cortas. Quiero mañanas lentas contigo y tardes apresuradas tomados de la mano. Quiero construir contigo esa casita con jardín donde Amber y Christopher puedan crecer, y donde nosotros podamos envejecer sin dejar de ser esa pareja loca que ríe por cualquier cosa.</p>
+      <p>Quiero cumplir cada cosa de esa lista, una a una, sin afán, sabiendo que el destino nos tiene cosas mejores de las que podemos imaginar. Quiero que el universo vea lo que somos juntos y entienda por qué las estrellas decidieron ponernos en el mismo camino.</p>
+      <p>Gracias por existir, mi pequeña princesa. Gracias por elegirme también, por quedarte cuando era difícil y por amarme como lo haces. Este no es el final de nada, al contrario...</p>
+      <p class="final-frase">Esto apenas es el comienzo de todo lo que quiero vivir contigo ❤️</p>
+      <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--azul3);margin-top:20px">Con todo mi corazón, Ricitos (y no de oro) 💜</p>
+    </div>
+    <button class="btn-principal" onclick="ir('sec-menu')" style="margin-top:30px">← Volver al inicio</button>
+  </div>
+</section>
+
+<!-- ═══ OVERLAY ANILLO ACEPTADO ═══ -->
+<div id="overlay-anillo" class="hidden">
+  <div class="overlay-anillo-inner">
+    <div class="overlay-anillo-emoji">💍✨💜</div>
+    <h2 class="overlay-anillo-titulo">¡Lo sabía!</h2>
+    <p class="overlay-anillo-msg">Prometo hacerte feliz cada día de mi vida ❤️</p>
+    <p class="overlay-anillo-sub">Prometo estar ahí en cada momento, en cada tropiezo y en cada victoria. Prometo amarte con todo lo que soy y con todo lo que seré.</p>
+    <button class="btn-principal" onclick="irFinalAmor()">Continuar ✨</button>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
