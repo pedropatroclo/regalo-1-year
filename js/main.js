@@ -1,9 +1,12 @@
+/* ═══════════════════════════════════════════════════
+   ESTRELLAS DE FONDO
+═══════════════════════════════════════════════════ */
 (function () {
   const bg = document.getElementById('stars-bg');
-  for (let i = 0; i < 130; i++) {
+  for (let i = 0; i < 150; i++) {
     const s = document.createElement('div');
     s.className = 'star-bg';
-    const sz = Math.random() * 2.5 + 0.4;
+    const sz = Math.random() * 2.8 + 0.4;
     s.style.cssText = `width:${sz}px;height:${sz}px;
       left:${Math.random() * 100}vw;top:${Math.random() * 100}vh;
       animation-duration:${Math.random() * 4 + 2}s;
@@ -12,6 +15,9 @@
   }
 })();
 
+/* ═══════════════════════════════════════════════════
+   CORAZONES FLOTANTES
+═══════════════════════════════════════════════════ */
 function crearC() {
   const c = document.createElement('div');
   c.className = 'corazon';
@@ -28,7 +34,71 @@ function crearC() {
 setInterval(crearC, 1100);
 for (let i = 0; i < 4; i++) setTimeout(crearC, i * 400);
 
-/* ── MÚSICA ── */
+/* ═══════════════════════════════════════════════════
+   PANTALLA DE CARGA — CONTRASEÑA
+═══════════════════════════════════════════════════ */
+function avanzarCarga(el, nextId, maxLen) {
+  if (el.value.length >= maxLen && nextId) {
+    document.getElementById(nextId).focus();
+  }
+}
+
+function verificarClave() {
+  const d  = document.getElementById('ci1').value.trim();
+  const m  = document.getElementById('ci2').value.trim();
+  const aa = document.getElementById('ci3').value.trim();
+  const clave = `${d}-${m}-${aa}`;
+  // Contraseña: 27-4-25 (27 de abril de 2025)
+  if (clave === '27-4-25') {
+    const pc = document.getElementById('pantalla-carga');
+    pc.classList.add('saliendo');
+    setTimeout(() => {
+      pc.style.display = 'none';
+      const menu = document.getElementById('sec-menu');
+      menu.classList.remove('hidden');
+      menu.style.opacity = '0';
+      setTimeout(() => {
+        menu.style.opacity = '1';
+        menu.classList.add('entrando');
+        iniciarContador();
+      }, 60);
+    }, 700);
+  } else {
+    const err = document.getElementById('carga-err');
+    err.classList.remove('hidden');
+    setTimeout(() => err.classList.add('hidden'), 2500);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   CONTADOR DE TIEMPO JUNTOS
+═══════════════════════════════════════════════════ */
+function iniciarContador() {
+  const inicio = new Date('2025-04-27T00:00:00');
+
+  function actualizar() {
+    const ahora = new Date();
+    const diff  = ahora - inicio;
+    if (diff < 0) return;
+
+    const dias   = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const horas  = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const min    = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seg    = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const el = document.getElementById('contador-juntos');
+    if (el) {
+      el.textContent = `💜 ${dias}d ${horas}h ${min}m ${seg}s juntos 💜`;
+    }
+  }
+
+  actualizar();
+  setInterval(actualizar, 1000);
+}
+
+/* ═══════════════════════════════════════════════════
+   MÚSICA — TAYLOR SWIFT LOVER
+═══════════════════════════════════════════════════ */
 let musicPlaying = false;
 const audio = document.getElementById('bg-music');
 audio.volume = 0.22;
@@ -47,26 +117,59 @@ function toggleMusic() {
   musicPlaying = !musicPlaying;
 }
 
-/* ── NAVEGACIÓN ── */
+/* ═══════════════════════════════════════════════════
+   SONIDOS DE UI
+═══════════════════════════════════════════════════ */
+function playSound(id) {
+  try {
+    const snd = document.getElementById(id);
+    if (snd) {
+      snd.currentTime = 0;
+      snd.volume = 0.45;
+      snd.play().catch(() => {});
+    }
+  } catch(e) {}
+}
+
+/* ═══════════════════════════════════════════════════
+   NAVEGACIÓN CON TRANSICIÓN
+═══════════════════════════════════════════════════ */
 function ir(id) {
   document.querySelectorAll('.sec').forEach(s => {
     s.style.opacity = '0';
-    setTimeout(() => s.classList.add('hidden'), 280);
+    s.style.transform = 'translateY(-18px) scale(.98)';
+    s.style.transition = 'opacity .38s ease, transform .38s ease';
+    setTimeout(() => {
+      s.classList.add('hidden');
+      s.style.transform = '';
+      s.style.transition = '';
+    }, 380);
   });
   setTimeout(() => {
     const d = document.getElementById(id);
     d.classList.remove('hidden');
-    setTimeout(() => (d.style.opacity = '1'), 30);
+    d.style.opacity = '0';
+    d.style.transform = 'translateY(28px) scale(.97)';
+    d.style.transition = 'opacity .5s cubic-bezier(.4,0,.2,1), transform .5s cubic-bezier(.34,1.2,.64,1)';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        d.style.opacity = '1';
+        d.style.transform = 'translateY(0) scale(1)';
+      });
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (id === 'sec-impacto')      setTimeout(animarImpacto, 400);
-    if (id === 'sec-constelacion') setTimeout(dibujarConst, 200);
+    if (id === 'sec-impacto')      setTimeout(animarImpacto, 450);
+    if (id === 'sec-constelacion') setTimeout(dibujarConst, 220);
     if (id === 'sec-universo')     buildUniverso();
     if (id === 'sec-escape')       iniciarEscape();
     if (id === 'sec-decisiones')   cargarDec(0);
-  }, 300);
+    if (id === 'sec-final')        iniciarCuentaRegresiva();
+  }, 400);
 }
 
-/* ── CONSTELACIÓN ── */
+/* ═══════════════════════════════════════════════════
+   CONSTELACIÓN
+═══════════════════════════════════════════════════ */
 const estrellas = [
   { x: .08, y: .18, msg: 'Esta constelación es una pequeña referencia porque gracias a ti he podido cambiar poco a poco en la vida y lograr ser una mejor persona, y lograste que este tonto apático fuera capaz de ser meloso y logre ser una supernova. 💙', nombre: 'C',  tipo: 'inicial' },
   { x: .92, y: .18, msg: 'Esta sección es solo para recordarte que para mí siempre serás mi persona más importante y una gran estrella que vino a mi vida y a iluminarla en todo momento y por eso solo queda decir: te amo, mi pequeña nalgona, jajaja. ❤️', nombre: 'S',  tipo: 'inicial' },
@@ -97,7 +200,7 @@ function dibujarConst() {
   g.addColorStop(0,'rgba(22,0,44,.85)');
   g.addColorStop(1,'rgba(4,0,12,.96)');
   ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
-  ctx.strokeStyle = 'rgba(255,105,180,.2)'; ctx.lineWidth = 1;
+  ctx.strokeStyle = 'rgba(255,105,180,.22)'; ctx.lineWidth = 1;
   lineas.forEach(([a,b]) => {
     const ea = estrellas[a], eb = estrellas[b];
     ctx.beginPath(); ctx.moveTo(ea.x*W, ea.y*H); ctx.lineTo(eb.x*W, eb.y*H); ctx.stroke();
@@ -109,10 +212,10 @@ function dibujarConst() {
     const r = { inicial:13, fecha:11, centro:10, corazon:9, normal:7 }[e.tipo];
     const col = colMap[e.tipo];
     const glow = ctx.createRadialGradient(x,y,0,x,y,r*3.5);
-    glow.addColorStop(0, `rgba(${rgbMap[col]},.35)`);
+    glow.addColorStop(0, `rgba(${rgbMap[col]},.38)`);
     glow.addColorStop(1,'transparent');
     ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x,y,r*3.5,0,Math.PI*2); ctx.fill();
-    ctx.shadowBlur = 14; ctx.shadowColor = col;
+    ctx.shadowBlur = 18; ctx.shadowColor = col;
     ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
     ctx.shadowBlur = 0;
     ctx.fillStyle = 'rgba(0,0,0,.75)';
@@ -139,12 +242,14 @@ document.addEventListener('DOMContentLoaded', () => {
       tip.style.top  = (ev.clientY - 18) + 'px';
       tip.classList.add('on');
       clearTimeout(tip._t);
-      tip._t = setTimeout(() => tip.classList.remove('on'), 3200);
+      tip._t = setTimeout(() => tip.classList.remove('on'), 3400);
     }
   });
 });
 
-/* ── UNIVERSO ── */
+/* ═══════════════════════════════════════════════════
+   UNIVERSO
+═══════════════════════════════════════════════════ */
 const planetas = [
   { ic:'💖', nombre:'Amor',      color:'#ff1493', desc:'Este planeta es una representación de todo lo que siento por ti. Después de todo, solo un planeta lograría captar así sea una pequeña sección de toda la obsesión que siento por ti y esas nalgotas, jajajaja.', size:50, dist:.20, vel:11 },
   { ic:'🤝', nombre:'Confianza', color:'#4fc3f7', desc:'Este planeta es una pequeña referencia de toda la confianza que has acumulado a lo largo de todo el tiempo que llevamos juntos. Después de todo lo que has hecho por este tonto, ha logrado que este planeta crezca cada día y esperemos lo haga más cada día.', size:28, dist:.31, vel:18 },
@@ -163,7 +268,7 @@ function buildUniverso() {
     const plan = document.createElement('div'); plan.className = 'planeta';
     plan.style.cssText = `width:${p.size}px;height:${p.size}px;
       background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.28),${p.color});
-      box-shadow:0 0 18px ${p.color}90;
+      box-shadow:0 0 20px ${p.color}a0;
       top:${-p.size/2}px;left:${os/2 - p.size/2}px;
       animation-delay:${i*.4}s;font-size:${p.size*.5}px`;
     plan.textContent = p.ic;
@@ -180,7 +285,9 @@ function abrirModal(p) {
 }
 function cerrarModal() { document.getElementById('modal-bg').classList.add('hidden'); }
 
-/* ── MÁQUINA DEL DESTINO ── */
+/* ═══════════════════════════════════════════════════
+   MÁQUINA DEL DESTINO
+═══════════════════════════════════════════════════ */
 const frasesDest = [
   'Viajar juntos al fin del mundo 🌍',
   'Repetir esas noches solos 🔥',
@@ -195,7 +302,7 @@ const frasesDest = [
 ];
 let destIdx = 0;
 
-function girarDestino() {                          /* ← llave de apertura */
+function girarDestino() {
   const p = document.getElementById('dest-pantalla');
   p.style.opacity = '.3';
   let n = 0;
@@ -208,9 +315,11 @@ function girarDestino() {                          /* ← llave de apertura */
     }
   }, 110);
   setTimeout(() => (p.style.opacity = '1'), 1700);
-}                                                  /* ← llave de cierre — CORREGIDO */
+}
 
-/* ── ESCAPE ROOM ── */
+/* ═══════════════════════════════════════════════════
+   ESCAPE ROOM
+═══════════════════════════════════════════════════ */
 const pistas = [
   { q:'¿Cuál es el ingrediente secreto de nuestra historia?',   ops:['El tiempo','Tus nalgas','La suerte','La distancia'],                         ok:1 },
   { q:'Si nuestro amor fuera un lugar, ¿cuál sería?',           ops:['Una ciudad fría','Un lugar sin nombre','Donde estemos juntos','El pasado'],   ok:2 },
@@ -264,7 +373,9 @@ function responder(idx, btn, cont) {
 }
 function reiniciarEscape() { iniciarEscape(); }
 
-/* ── IMPACTO ── */
+/* ═══════════════════════════════════════════════════
+   IMPACTO
+═══════════════════════════════════════════════════ */
 const impData = [
   { lbl:'💛 Felicidad',         val:'+∞%',   pct:100, color:'linear-gradient(90deg,#ffd54f,#ff9800)' },
   { lbl:'❤️ Amor',              val:'+1000%', pct:100, color:'linear-gradient(90deg,#ff1493,#c2185b)' },
@@ -291,7 +402,9 @@ function animarImpacto() {
   document.querySelectorAll('.imp-val').forEach(v => setTimeout(() => v.classList.add('vis'), 400));
 }
 
-/* ── DECISIONES ── */
+/* ═══════════════════════════════════════════════════
+   DECISIONES
+═══════════════════════════════════════════════════ */
 const arbol = [
   { q:'Si pudiera elegir mil veces...',  ops:[{t:'Te elegiría',n:1},           {t:'Te elegiría otra vez',n:1}]     },
   { q:'Y si el tiempo se reiniciara...', ops:[{t:'Volvería a buscarte',n:2},   {t:'Esperaría a que llegaras',n:2}] },
@@ -310,7 +423,9 @@ function cargarDec(idx) {
     <div class="dec-ops">${n.ops.map(o => `<button class="dec-btn" onclick="cargarDec(${o.n})">${o.t}</button>`).join('')}</div>`;
 }
 
-/* ── RULETA ── */
+/* ═══════════════════════════════════════════════════
+   RULETA
+═══════════════════════════════════════════════════ */
 const mensajesRuleta = [
   'Tu sonrisa siempre iluminará mi vida 🌟',
   'Contigo cada día es mi favorito 💕',
@@ -352,7 +467,9 @@ function girarRuleta() {
   }, 3600);
 }
 
-/* ── RAZONES ── */
+/* ═══════════════════════════════════════════════════
+   RAZONES
+═══════════════════════════════════════════════════ */
 const razonesData = [
   { ic:'😊', titulo:'Tu sonrisa',        texto:'Cuando sonríes el mundo entero tiene más brillo. No hay nada igual en este universo.' },
   { ic:'🫂', titulo:'Tu abrazo',          texto:'En tus brazos siempre encuentro el lugar más seguro y cálido que existe.' },
@@ -380,7 +497,84 @@ function buildRazones() {
   });
 }
 
-/* ── CÓDIGOS FINALES ── */
+/* ═══════════════════════════════════════════════════
+   CAJITA DEL ANILLO
+═══════════════════════════════════════════════════ */
+let cajitaAbierta = false;
+
+function abrirCajita() {
+  if (cajitaAbierta) return;
+  cajitaAbierta = true;
+  playSound('snd-ring');
+  const tapa = document.getElementById('cajita-tapa');
+  const anilloInside = document.getElementById('anillo-inside');
+  const hint = document.getElementById('cajita-hint');
+  tapa.classList.add('abierta');
+  hint.style.display = 'none';
+  setTimeout(() => {
+    anilloInside.classList.remove('hidden');
+  }, 400);
+  setTimeout(() => {
+    document.getElementById('anillo-pregunta').classList.remove('hidden');
+  }, 900);
+}
+
+function aceptarAnillo() {
+  // Ocultar panel anillo
+  document.getElementById('panel-anillo').classList.add('hidden');
+  // Mostrar overlay
+  const overlay = document.getElementById('overlay-anillo');
+  overlay.classList.remove('hidden');
+  // Lluvia de corazones
+  lluviaCorazones();
+}
+
+function lluviaCorazones() {
+  const emojis = ['💜','💖','💕','💗','❤️','✨','💍','🌹','💝','💞'];
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'corazon-lluvia';
+      c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      const duracion = Math.random() * 3 + 2.5;
+      c.style.cssText = `
+        left:${Math.random() * 100}vw;
+        bottom:0;
+        font-size:${Math.random() * 22 + 14}px;
+        animation-duration:${duracion}s;
+        animation-delay:${Math.random() * 1.5}s`;
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), (duracion + 1.8) * 1000);
+    }, i * 45);
+  }
+}
+
+function irFinalAmor() {
+  document.getElementById('overlay-anillo').classList.add('hidden');
+  // Resetear cajita para si vuelve
+  cajitaAbierta = false;
+  document.getElementById('cajita-tapa').classList.remove('abierta');
+  document.getElementById('anillo-inside').classList.add('hidden');
+  document.getElementById('anillo-pregunta').classList.add('hidden');
+  document.getElementById('cajita-hint').style.display = '';
+  ir('sec-final-amor');
+}
+
+/* ═══════════════════════════════════════════════════
+   CUMPLEAÑOS
+═══════════════════════════════════════════════════ */
+function verificarCumple() {
+  const hoy = new Date();
+  const cumple = new Date('2026-10-08');
+  if (hoy >= cumple) {
+    mostrarExtra('panel-cumple');
+  }
+  // Si no es la fecha, la tarjeta ya indica el aviso, no se abre
+}
+
+/* ═══════════════════════════════════════════════════
+   CÓDIGOS FINALES
+═══════════════════════════════════════════════════ */
 const CODES = ['STAR','LUNA','ALMA','ROSE','VIDA','EVER'];
 const found = new Set();
 
@@ -417,8 +611,10 @@ function actualizarBadges() {
 
 function desbloquear() {
   if (found.size < 6) return;
+  playSound('snd-unlock');
   document.getElementById('vista-cod').classList.add('hidden');
   document.getElementById('contenido-desbloqueado').classList.remove('hidden');
+  // Lluvia de corazones al desbloquear
   for (let i = 0; i < 50; i++) setTimeout(() => {
     const c = document.createElement('div');
     c.style.cssText = `position:fixed;font-size:${Math.random()*24+14}px;
@@ -428,15 +624,45 @@ function desbloquear() {
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 4700);
   }, i * 80);
+  iniciarCuentaRegresiva();
 }
 
-const sLluvia = document.createElement('style');
-sLluvia.textContent = `@keyframes finLluvia{
-  from{transform:translateY(0) rotate(0deg);opacity:1}
-  to{transform:translateY(-125vh) rotate(720deg);opacity:0}}`;
-document.head.appendChild(sLluvia);
+function volverACodigos() {
+  document.getElementById('contenido-desbloqueado').classList.add('hidden');
+  document.getElementById('vista-cod').classList.remove('hidden');
+}
 
-/* ── EXTRAS POST-DESBLOQUEO ── */
+/* ═══════════════════════════════════════════════════
+   CUENTA REGRESIVA — 12 junio 2026
+═══════════════════════════════════════════════════ */
+let cuentaInterval = null;
+
+function iniciarCuentaRegresiva() {
+  if (cuentaInterval) clearInterval(cuentaInterval);
+  const meta = new Date('2026-06-12T00:00:00');
+
+  function tick() {
+    const ahora = new Date();
+    const diff  = meta - ahora;
+    if (diff <= 0) {
+      document.getElementById('cr-dias').textContent  = '0';
+      document.getElementById('cr-horas').textContent = '0';
+      document.getElementById('cr-min').textContent   = '0';
+      document.getElementById('cr-seg').textContent   = '0';
+      return;
+    }
+    document.getElementById('cr-dias').textContent  = Math.floor(diff / (1000*60*60*24));
+    document.getElementById('cr-horas').textContent = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    document.getElementById('cr-min').textContent   = Math.floor((diff%(1000*60*60))/(1000*60));
+    document.getElementById('cr-seg').textContent   = Math.floor((diff%(1000*60))/1000);
+  }
+  tick();
+  cuentaInterval = setInterval(tick, 1000);
+}
+
+/* ═══════════════════════════════════════════════════
+   EXTRAS POST-DESBLOQUEO
+═══════════════════════════════════════════════════ */
 function mostrarExtra(id) {
   document.querySelectorAll('.panel-extra').forEach(p => p.classList.add('hidden'));
   const panel = document.getElementById(id);
@@ -448,6 +674,14 @@ function mostrarExtra(id) {
       document.getElementById('ruleta-msg').style.opacity = '1';
     }
     if (id === 'panel-razones') buildRazones();
+    if (id === 'panel-anillo') {
+      // resetear cajita si ya se abrió antes
+      cajitaAbierta = false;
+      document.getElementById('cajita-tapa').classList.remove('abierta');
+      document.getElementById('anillo-inside').classList.add('hidden');
+      document.getElementById('anillo-pregunta').classList.add('hidden');
+      document.getElementById('cajita-hint').style.display = '';
+    }
   }
 }
 
@@ -455,7 +689,20 @@ function cerrarExtra(id) {
   document.getElementById(id).classList.add('hidden');
 }
 
-/* ── INIT ── */
+/* ═══════════════════════════════════════════════════
+   ESTILOS DINÁMICOS EXTRA
+═══════════════════════════════════════════════════ */
+const sLluvia = document.createElement('style');
+sLluvia.textContent = `
+@keyframes finLluvia {
+  from { transform: translateY(0) rotate(0deg); opacity: 1; }
+  to   { transform: translateY(-125vh) rotate(720deg); opacity: 0; }
+}`;
+document.head.appendChild(sLluvia);
+
+/* ═══════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('sec-menu').style.opacity = '1';
+  // El menú se muestra luego de verificar la clave, no al inicio
 });
