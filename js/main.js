@@ -582,10 +582,32 @@ function verificarCumple() {
 }
 
 /* ═══════════════════════════════════════════════════
-   CÓDIGOS FINALES
+   CÓDIGOS FINALES — CON localStorage
 ═══════════════════════════════════════════════════ */
 const CODES = ['STAR','LUNA','ALMA','ROSE','VIDA','EVER'];
-const found = new Set();
+
+// Cargar códigos guardados desde localStorage
+const STORAGE_KEY = 'nuestro_rincon_codigos';
+let found = new Set();
+
+function cargarCodigosGuardados() {
+  try {
+    const guardados = localStorage.getItem(STORAGE_KEY);
+    if (guardados) {
+      const arr = JSON.parse(guardados);
+      found = new Set(arr.filter(c => CODES.includes(c)));
+    }
+  } catch(e) {
+    found = new Set();
+  }
+  actualizarBadges();
+}
+
+function guardarCodigos() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...found]));
+  } catch(e) {}
+}
 
 function agregarCod() {
   const inp = document.getElementById('cod-input');
@@ -599,6 +621,7 @@ function agregarCod() {
     return;
   }
   found.add(val);
+  guardarCodigos();
   inp.value = '';
   actualizarBadges();
 }
@@ -713,5 +736,5 @@ document.head.appendChild(sLluvia);
    INIT
 ═══════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  // El menú se muestra luego de verificar la clave, no al inicio
+  cargarCodigosGuardados();
 });
