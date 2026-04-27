@@ -247,8 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     if (tocada) {
       tip.textContent = tocada.msg;
-      tip.style.left = (ev.clientX + 14) + 'px';
-      tip.style.top  = (ev.clientY - 18) + 'px';
+      const tipW = 210;
+      const tipH = 120;
+      const leftPos = (ev.clientX + 14 + tipW > window.innerWidth)
+        ? Math.max(6, ev.clientX - tipW - 14)
+        : (ev.clientX + 14);
+      const topPos = (ev.clientY - 18 + tipH > window.innerHeight)
+        ? Math.max(6, ev.clientY - tipH - 10)
+        : (ev.clientY - 18);
+      tip.style.left = leftPos + 'px';
+      tip.style.top  = topPos  + 'px';
       tip.classList.add('on');
       clearTimeout(tip._t);
       tip._t = setTimeout(() => tip.classList.remove('on'), 3400);
