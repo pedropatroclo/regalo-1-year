@@ -513,7 +513,7 @@ function buildRazones() {
 }
 
 /* ═══════════════════════════════════════════════════
-   RAMO DE FLORES AMARILLAS
+   RAMO DE FLORES AMARILLAS (con sobre/carta dentro)
 ═══════════════════════════════════════════════════ */
 let ramoAbierto = false;
 
@@ -528,7 +528,7 @@ function abrirRamo() {
   setTimeout(() => {
     carta.classList.remove('hidden');
     carta.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, 350);
+  }, 500);
 }
 
 function resetRamo() {
