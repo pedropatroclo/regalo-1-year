@@ -48,7 +48,6 @@ function verificarClave() {
   const m  = document.getElementById('ci2').value.trim();
   const aa = document.getElementById('ci3').value.trim();
   const clave = `${d}-${m}-${aa}`;
-  // Contraseña: 27-4-25 (27 de abril de 2025)
   if (clave === '27-4-25') {
     const pc = document.getElementById('pantalla-carga');
     pc.classList.add('saliendo');
@@ -63,7 +62,6 @@ function verificarClave() {
         iniciarContador();
       }, 60);
     }, 700);
-    // Arrancar música automáticamente al entrar (el clic cuenta como interacción)
     setTimeout(() => {
       audio.play().then(() => {
         musicPlaying = true;
@@ -515,6 +513,35 @@ function buildRazones() {
 }
 
 /* ═══════════════════════════════════════════════════
+   RAMO DE FLORES AMARILLAS
+═══════════════════════════════════════════════════ */
+let ramoAbierto = false;
+
+function abrirRamo() {
+  if (ramoAbierto) return;
+  ramoAbierto = true;
+  const caja  = document.getElementById('ramo-caja');
+  const hint  = document.getElementById('ramo-hint');
+  const carta = document.getElementById('carta-flores');
+  caja.classList.add('abierto');
+  hint.style.display = 'none';
+  setTimeout(() => {
+    carta.classList.remove('hidden');
+    carta.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 350);
+}
+
+function resetRamo() {
+  ramoAbierto = false;
+  const caja  = document.getElementById('ramo-caja');
+  const hint  = document.getElementById('ramo-hint');
+  const carta = document.getElementById('carta-flores');
+  if (caja)  caja.classList.remove('abierto');
+  if (hint)  hint.style.display = '';
+  if (carta) carta.classList.add('hidden');
+}
+
+/* ═══════════════════════════════════════════════════
    CAJITA DEL ANILLO
 ═══════════════════════════════════════════════════ */
 let cajitaAbierta = false;
@@ -537,12 +564,9 @@ function abrirCajita() {
 }
 
 function aceptarAnillo() {
-  // Ocultar panel anillo
   document.getElementById('panel-anillo').classList.add('hidden');
-  // Mostrar overlay
   const overlay = document.getElementById('overlay-anillo');
   overlay.classList.remove('hidden');
-  // Lluvia de corazones
   lluviaCorazones();
 }
 
@@ -568,7 +592,6 @@ function lluviaCorazones() {
 
 function irFinalAmor() {
   document.getElementById('overlay-anillo').classList.add('hidden');
-  // Resetear cajita para si vuelve
   cajitaAbierta = false;
   document.getElementById('cajita-tapa').classList.remove('abierta');
   document.getElementById('anillo-inside').classList.add('hidden');
@@ -586,15 +609,12 @@ function verificarCumple() {
   if (hoy >= cumple) {
     mostrarExtra('panel-cumple');
   }
-  // Si no es la fecha, la tarjeta ya indica el aviso, no se abre
 }
 
 /* ═══════════════════════════════════════════════════
    CÓDIGOS FINALES — CON localStorage
 ═══════════════════════════════════════════════════ */
 const CODES = ['STAR','LUNA','ALMA','ROSE','VIDA','EVER'];
-
-// Cargar códigos guardados desde localStorage
 const STORAGE_KEY = 'nuestro_rincon_codigos';
 let found = new Set();
 
@@ -654,7 +674,6 @@ function desbloquear() {
   playSound('snd-unlock');
   document.getElementById('vista-cod').classList.add('hidden');
   document.getElementById('contenido-desbloqueado').classList.remove('hidden');
-  // Lluvia de corazones al desbloquear
   for (let i = 0; i < 50; i++) setTimeout(() => {
     const c = document.createElement('div');
     c.style.cssText = `position:fixed;font-size:${Math.random()*24+14}px;
@@ -714,8 +733,8 @@ function mostrarExtra(id) {
       document.getElementById('ruleta-msg').style.opacity = '1';
     }
     if (id === 'panel-razones') buildRazones();
+    if (id === 'panel-flores') resetRamo();
     if (id === 'panel-anillo') {
-      // resetear cajita si ya se abrió antes
       cajitaAbierta = false;
       document.getElementById('cajita-tapa').classList.remove('abierta');
       document.getElementById('anillo-inside').classList.add('hidden');
