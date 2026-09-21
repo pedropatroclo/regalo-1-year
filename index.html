@@ -31,12 +31,10 @@
 <div id="stars-bg"></div>
 <div id="music-btn" onclick="toggleMusic()" title="Música">🎵</div>
 
-<!-- Audio: reemplaza el src con la ruta de tu archivo de Lover de Taylor Swift -->
 <audio id="bg-music" loop>
   <source src="audio/Taylor Swift - Lover (Official Music Video).mp3" type="audio/mpeg">
 </audio>
 
-<!-- Sonidos de UI -->
 <audio id="snd-unlock" preload="auto">
   <source src="audio/unlock.mp3" type="audio/mpeg">
 </audio>
@@ -192,7 +190,6 @@
     <h2 class="t glow-fuerte">Final Secreto 🔐</h2>
     <p class="sub">Ingresa los 6 códigos que encontraste en cada sección</p>
 
-    <!-- Zona de códigos -->
     <div id="vista-cod">
       <p style="font-family:'Cinzel',serif;letter-spacing:2px;font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:12px">CÓDIGOS ENCONTRADOS</p>
       <div class="badges" id="badges">
@@ -214,17 +211,13 @@
           🔐 Desbloquear Carta Final
         </button>
       </div>
-      <!-- Botón volver en la vista de códigos -->
       <button class="btn btn-volver" style="margin-top:28px" onclick="ir('sec-menu')">← Volver al menú</button>
     </div>
 
-    <!-- Contenido desbloqueado -->
     <div id="contenido-desbloqueado" class="hidden">
 
-      <!-- Botón volver a buscar códigos -->
       <button class="btn btn-volver-codigos" onclick="volverACodigos()">🔑 Buscar más códigos</button>
 
-      <!-- Carta final -->
       <div class="carta-final" style="margin-bottom:14px">
         <div style="font-size:3.2rem;margin-bottom:18px">💌✨🌹</div>
         <h3>Para ti, mi Sharick</h3>
@@ -234,7 +227,6 @@
 
       <div class="sep"></div>
 
-      <!-- Cuenta regresiva -->
       <div class="cuenta-regresiva-wrap">
         <p class="extras-titulo">El día que nos volveremos a ver 📅</p>
         <p class="extras-sub">Cuenta regresiva hasta el 12 de junio de 2026</p>
@@ -248,7 +240,6 @@
 
       <div class="sep"></div>
 
-      <!-- Extras -->
       <p class="extras-titulo">Aún quedan cosas, mi amor... 🎁</p>
       <p class="extras-sub">Elige qué quieres explorar primero</p>
 
@@ -322,31 +313,44 @@
         <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-razones')">Cerrar 💫</button>
       </div>
 
-      <!-- PANEL: Flores Amarillas -->
+      <!-- PANEL: Flores Amarillas (RAMO ANIMADO) -->
       <div id="panel-flores" class="panel-extra hidden">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Flores Amarillas 🌼</p>
         <p class="extras-sub" style="margin-bottom:16px">Porque no siempre necesito una fecha especial para pensar en ti</p>
-        <div class="flores-caja">
-          <div class="flores-fila">
-            <span class="flor-emoji">🌼</span>
-            <span class="flor-emoji">🌻</span>
-            <span class="flor-emoji">🌼</span>
-            <span class="flor-emoji">🌻</span>
-            <span class="flor-emoji">🌼</span>
+
+        <div class="ramo-wrap" id="ramo-wrap">
+          <div class="ramo-caja" id="ramo-caja" onclick="abrirRamo()">
+            <div class="ramo-flores">
+              <span class="ramo-flor f1">🌻</span>
+              <span class="ramo-flor f2">🌼</span>
+              <span class="ramo-flor f3">🌻</span>
+              <span class="ramo-flor f4">🌼</span>
+              <span class="ramo-flor f5">🌻</span>
+              <span class="ramo-hoja h1">🍃</span>
+              <span class="ramo-hoja h2">🍃</span>
+            </div>
+            <div class="ramo-envoltura"></div>
+            <p class="ramo-hint" id="ramo-hint">Toca el ramo para abrir la carta</p>
           </div>
-          <p class="flores-texto">
-             Aunque sea algo un poco triste qusiera hacerte algo un poco mas grande es lo mejor que he podido hacer 
-             mi pequeño acaro me encantaria poder llevarte a salir  y poder visitar lugares a donde se pueda pero 
-             al final no pude pero bueno basta de melancolia feliz dia de las flores amarillas  mi linda acaro aunque no 
-             es algo tan grande que poder presumir solo es para decirte te amo y te amare todo el tiempo que se me permita
-             solo me queda una pequeña pregunta que has opinado de estas semanas algo que cambiarias o algo que te moleste ?
-             pero bueno mi lindo acaro aunque haya dejado de ser tu prioridad y no me respondas para subir estados te amo jaajaj
-             y recuerda las flores son un simbolo de felicidad y de nuevos comienzos esperemos y los nuevos comienzos sea hacia 
-             algo mas sano o si las cosas llevan al mal final almenos tener algo bueno 🌻 un ramito todo triste 💐 aunque sea chiquito
-             recuerda que  
-          </p>
-          <p class="flores-firma">este ramo no se marchita nunca. Siempre que quieras, puedes volver a verlo. 🌼</p>
+
+          <div class="carta-flores hidden" id="carta-flores">
+            <div class="carta-flores-inner">
+              <p class="flores-texto">
+                 Aunque sea algo un poco triste quisiera hacerte algo un poco más grande, es lo mejor que he podido hacer,
+                 mi pequeño acaro. Me encantaría poder llevarte a salir y visitar lugares a donde se pueda, pero al final
+                 no pude; pero bueno, basta de melancolía, feliz día de las flores amarillas, mi linda acaro. Aunque no es
+                 algo tan grande que poder presumir, solo es para decirte que te amo y te amaré todo el tiempo que se me
+                 permita. Solo me queda una pequeña pregunta: ¿qué has opinado de estas semanas? ¿Algo que cambiarías o
+                 algo que te moleste? Pero bueno, mi lindo acaro, aunque haya dejado de ser tu prioridad y no me respondas
+                 para subir estados, te amo jajaja, y recuerda que las flores son un símbolo de felicidad y de nuevos
+                 comienzos; esperemos que los nuevos comienzos sean hacia algo más sano o, si las cosas llevan al mal
+                 final, al menos tener algo bueno. 🌻 Un ramito todo triste 💐, aunque sea chiquito, recuerda que...
+              </p>
+              <p class="flores-firma">este ramo no se marchita nunca. Siempre que quieras, puedes volver a verlo. 🌼</p>
+            </div>
+          </div>
         </div>
+
         <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-flores')">Cerrar 💫</button>
       </div>
 
