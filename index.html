@@ -1,49 +1,57 @@
-<!-- PANEL: Flores Amarillas (RAMO + CARTA) -->
-<div id="panel-flores" class="panel-extra hidden">
-  <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Flores Amarillas 🌼</p>
-  <p class="extras-sub" style="margin-bottom:16px">Porque no siempre necesito una fecha especial para pensar en ti</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>♥ Nuestro pequeño rincón del universo ♥</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌑</text></svg>">
+</head>
+<body>
 
-  <div class="ramo-wrap" id="ramo-wrap">
-    <div class="ramo-caja" id="ramo-caja" onclick="abrirRamo()">
-
-      <div class="ramo-flores">
-        <span class="ramo-flor f1">🌻</span>
-        <span class="ramo-flor f2">🌼</span>
-        <span class="ramo-flor f3">🌻</span>
-        <span class="ramo-flor f4">🌼</span>
-        <span class="ramo-flor f5">🌻</span>
-        <span class="ramo-hoja h1">🍃</span>
-        <span class="ramo-hoja h2">🍃</span>
-      </div>
-
-      <!-- Carta doblada, asomada entre las flores -->
-      <div class="carta-sobre" id="carta-sobre">
-        <div class="sobre-solapa"></div>
-        <div class="sobre-cuerpo">💌</div>
-      </div>
-
-      <div class="ramo-envoltura"></div>
-      <p class="ramo-hint" id="ramo-hint">Toca el ramo para abrir la carta</p>
+<!-- ═══════════════════ PANTALLA DE CARGA ═══════════════════ -->
+<div id="pantalla-carga">
+  <div class="carga-inner">
+    <div class="carga-corazon">💜</div>
+    <h1 class="carga-titulo">Nuestro rincón del universo</h1>
+    <p class="carga-sub">Ingresa la contraseña para entrar</p>
+    <div class="carga-inputs">
+      <input class="carga-input" id="ci1" type="text" maxlength="2" placeholder="DD" oninput="avanzarCarga(this,'ci2',2)">
+      <span class="carga-guion">-</span>
+      <input class="carga-input" id="ci2" type="text" maxlength="1" placeholder="M" oninput="avanzarCarga(this,'ci3',1)">
+      <span class="carga-guion">-</span>
+      <input class="carga-input" id="ci3" type="text" maxlength="2" placeholder="AA" oninput="avanzarCarga(this,null,2)">
     </div>
-
-    <!-- Carta abierta / desplegada -->
-    <div class="carta-flores hidden" id="carta-flores">
-      <div class="carta-flores-inner">
-        <p class="flores-texto">
-           Aunque sea algo un poco triste quisiera hacerte algo un poco más grande, es lo mejor que he podido hacer,
-           mi pequeño acaro. Me encantaría poder llevarte a salir y visitar lugares a donde se pueda, pero al final
-           no pude; pero bueno, basta de melancolía, feliz día de las flores amarillas, mi linda acaro. Aunque no es
-           algo tan grande que poder presumir, solo es para decirte que te amo y te amaré todo el tiempo que se me
-           permita. Solo me queda una pequeña pregunta: ¿qué has opinado de estas semanas? ¿Algo que cambiarías o
-           algo que te moleste? Pero bueno, mi lindo acaro, aunque haya dejado de ser tu prioridad y no me respondas
-           para subir estados, te amo jajaja, y recuerda que las flores son un símbolo de felicidad y de nuevos
-           comienzos; esperemos que los nuevos comienzos sean hacia algo más sano o, si las cosas llevan al mal
-           final, al menos tener algo bueno. 🌻 Un ramito todo triste 💐, aunque sea chiquito, recuerda que...
-        </p>
-        <p class="flores-firma">este ramo no se marchita nunca. Siempre que quieras, puedes volver a verlo. 🌼</p>
-      </div>
-    </div>
+    <button class="carga-btn" onclick="verificarClave()">Entrar ✨</button>
+    <p class="carga-err hidden" id="carga-err">❌ Contraseña incorrecta, inténtalo de nuevo</p>
   </div>
-
-  <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-flores')">Cerrar 💫</button>
 </div>
+
+<div id="stars-bg"></div>
+<div id="music-btn" onclick="toggleMusic()" title="Música">🎵</div>
+
+<audio id="bg-music" loop>
+  <source src="audio/Taylor Swift - Lover (Official Music Video).mp3" type="audio/mpeg">
+</audio>
+
+<audio id="snd-unlock" preload="auto">
+  <source src="audio/unlock.mp3" type="audio/mpeg">
+</audio>
+<audio id="snd-ring" preload="auto">
+  <source src="audio/ring.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ═══ MENÚ ═══ -->
+<section id="sec-menu" class="sec" style="opacity:0">
+  <div class="menu-header">
+    <div class="menu-corazon-anim">💜</div>
+    <h2 class="t">Mi linda princesa 💫</h2>
+    <p class="sub">Esta pequeña sección está hecha para que puedas ver y sentir un poco de la obsesión que siento por ti</p>
+    <div class="contador-juntos" id="contador-juntos"></div>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card" onclick="ir('sec-constelacion')">
+      <span class="ic">✨</span>
+      <h3>Nuestra Constelación</h3>
+      <p>Toca cada estrella para
