@@ -2,7 +2,7 @@
 .ramo-wrap{ display:flex; flex-direction:column; align-items:center; gap:22px; padding:10px 0 6px; }
 
 .ramo-caja{
-  position:relative; width:220px; height:240px; cursor:pointer;
+  position:relative; width:220px; height:260px; cursor:pointer;
   display:flex; align-items:flex-end; justify-content:center;
   animation:ramoEntrada .9s cubic-bezier(.34,1.4,.64,1) both,
             ramoFlotar 4.5s ease-in-out 1s infinite;
@@ -24,13 +24,14 @@
   clip-path:polygon(50% 0%, 100% 100%, 0% 100%);
   box-shadow:0 10px 24px rgba(0,0,0,.35), inset 0 0 30px rgba(255,255,255,.4);
   transition:transform .5s cubic-bezier(.34,1.4,.64,1), filter .5s ease;
+  z-index:1;
 }
 .ramo-caja.abierto .ramo-envoltura{
   transform:translateX(-50%) scale(1.06) rotate(-2deg);
   filter:brightness(1.15);
 }
 
-.ramo-flores{ position:absolute; bottom:118px; left:50%; transform:translateX(-50%); width:170px; height:130px; }
+.ramo-flores{ position:absolute; bottom:118px; left:50%; transform:translateX(-50%); width:170px; height:130px; z-index:3; }
 .ramo-flor, .ramo-hoja{
   position:absolute; font-size:2.6rem; opacity:0;
   filter:drop-shadow(0 4px 8px rgba(0,0,0,.35));
@@ -48,6 +49,43 @@
   0%   { opacity:0; transform:scale(0) translateY(20px) rotate(-20deg); }
   70%  { opacity:1; transform:scale(1.15) translateY(-4px) rotate(4deg); }
   100% { opacity:1; transform:scale(1) translateY(0) rotate(0deg); }
+}
+
+.carta-sobre{
+  position:absolute; bottom:150px; left:50%;
+  transform:translateX(-50%) translateY(14px) rotate(-4deg) scale(.85);
+  width:56px; height:40px;
+  opacity:0; z-index:2;
+  animation:sobrePop .6s cubic-bezier(.34,1.6,.64,1) 1.05s forwards;
+}
+@keyframes sobrePop{
+  0%   { opacity:0; transform:translateX(-50%) translateY(30px) rotate(-4deg) scale(.6); }
+  70%  { opacity:1; transform:translateX(-50%) translateY(6px)  rotate(-6deg) scale(1.08); }
+  100% { opacity:1; transform:translateX(-50%) translateY(14px) rotate(-4deg) scale(.85); }
+}
+.sobre-cuerpo{
+  width:56px; height:40px; border-radius:4px;
+  background:linear-gradient(160deg,#fffdf3,#fff2c4);
+  box-shadow:0 6px 14px rgba(0,0,0,.35);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem;
+}
+.sobre-solapa{
+  position:absolute; top:-8px; left:0; width:56px; height:20px;
+  background:linear-gradient(160deg,#fff9dc,#ffe9a8);
+  clip-path:polygon(0 0, 100% 0, 50% 100%);
+  transform-origin:top center;
+  transition:transform .45s ease;
+}
+.ramo-caja.abierto .sobre-solapa{
+  transform:rotateX(180deg);
+}
+.ramo-caja.abierto .carta-sobre{
+  animation:sobreSalir .5s ease forwards;
+}
+@keyframes sobreSalir{
+  0%   { opacity:1; }
+  100% { opacity:0; transform:translateX(-50%) translateY(-60px) rotate(8deg) scale(.6); }
 }
 
 .ramo-hint{
