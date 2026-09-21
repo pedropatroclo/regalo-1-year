@@ -12,6 +12,9 @@
   --azul2: #06b6d4;
   --azul3: #a5f3fc;
   --azul4: #e0f9ff;
+  --amarillo:  #fde047;
+  --amarillo2: #facc15;
+  --amarillo3: #fef9c3;
   --card:  rgba(155,77,255,.07);
   --borde: rgba(192,132,252,.22);
   --glow-lila: 0 0 30px rgba(155,77,255,.65), 0 0 60px rgba(155,77,255,.3);
@@ -613,6 +616,22 @@ p.sub {
 .extras-card-bloqueada { opacity: .6; cursor: not-allowed; }
 .extras-card-bloqueada:hover { transform: none; box-shadow: none; }
 
+/* Tarjeta de flores amarillas en el grid de extras */
+.extras-card-flores {
+  border-color: rgba(250,204,21,.4);
+}
+.extras-card-flores .e-ic {
+  filter: drop-shadow(0 0 8px rgba(253,224,71,.7));
+}
+.extras-card-flores h4 {
+  color: var(--amarillo3);
+  text-shadow: 0 0 12px rgba(253,224,71,.5);
+}
+.extras-card-flores:hover {
+  background: rgba(250,204,21,.1); border-color: var(--amarillo2);
+  box-shadow: 0 16px 40px rgba(250,204,21,.22), 0 0 0 1px rgba(253,224,71,.25);
+}
+
 .sep {
   width: 60%; max-width: 320px; height: 1px;
   background: linear-gradient(90deg,transparent,var(--lila3),transparent);
@@ -733,6 +752,57 @@ p.sub {
 .razon-txt {
   font-family: 'Playfair Display', serif; font-style: italic;
   font-size: .85rem; color: rgba(255,255,255,.68); line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════════════
+   FLORES AMARILLAS
+═══════════════════════════════════════════════════ */
+.flores-caja {
+  background: linear-gradient(135deg, rgba(250,204,21,.07), rgba(155,77,255,.06));
+  border: 1px solid rgba(253,224,71,.3);
+  border-radius: 24px; padding: 34px 26px;
+  max-width: 520px; width: 100%; margin: 0 auto;
+  box-shadow: 0 0 40px rgba(250,204,21,.12);
+}
+.flores-fila {
+  display: flex; justify-content: center; gap: 14px;
+  margin-bottom: 22px; flex-wrap: wrap;
+}
+.flor-emoji {
+  font-size: 2.6rem; display: inline-block;
+  filter: drop-shadow(0 0 10px rgba(253,224,71,.65));
+  animation: florMecer 3s ease-in-out infinite;
+}
+.flor-emoji:nth-child(2) { animation-delay: .3s; }
+.flor-emoji:nth-child(3) { animation-delay: .6s; }
+.flor-emoji:nth-child(4) { animation-delay: .9s; }
+.flor-emoji:nth-child(5) { animation-delay: 1.2s; }
+@keyframes florMecer {
+  0%,100% { transform: rotate(-6deg) translateY(0); }
+  50%      { transform: rotate(6deg) translateY(-6px); }
+}
+.flores-texto {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.02rem; color: rgba(255,255,255,.85); line-height: 1.85;
+  margin-bottom: 16px;
+}
+.flores-firma {
+  font-family: 'Great Vibes', cursive; font-size: 1.7rem;
+  color: var(--amarillo3);
+  text-shadow: 0 0 16px rgba(253,224,71,.55);
+}
+
+/* Pétalos amarillos cayendo (opcional, decorativo) */
+.petalo {
+  position: fixed; pointer-events: none; z-index: 1;
+  animation: petaloCaer linear infinite; user-select: none;
+  color: var(--amarillo2);
+  filter: drop-shadow(0 0 6px rgba(253,224,71,.6));
+}
+@keyframes petaloCaer {
+  0%   { transform: translateY(-10vh) rotate(0deg);   opacity: .0; }
+  10%  { opacity: .55; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0;  }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -924,6 +994,8 @@ p.sub {
   .cuenta-bloque { padding: 14px 16px; min-width: 72px; }
   .cuenta-num { font-size: 1.9rem; }
   .overlay-anillo-inner { padding: 0 8px; }
+  .flores-caja { padding: 26px 18px; }
+  .flor-emoji { font-size: 2.1rem; }
 }
 
 @media (max-width: 380px) {
