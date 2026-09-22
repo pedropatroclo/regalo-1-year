@@ -17,11 +17,11 @@
     <h1 class="carga-titulo">Nuestro rincón del universo</h1>
     <p class="carga-sub">Ingresa la contraseña para entrar</p>
     <div class="carga-inputs">
-      <input class="carga-input" id="ci1" type="text" maxlength="2" placeholder="DD" oninput="avanzarCarga(this,'ci2',2)">
+      <input class="carga-input" id="ci1" type="text" maxlength="2" placeholder="DD" oninput="avanzarCarga(this,'ci2',2)" autocomplete="off">
       <span class="carga-guion">-</span>
-      <input class="carga-input" id="ci2" type="text" maxlength="1" placeholder="M" oninput="avanzarCarga(this,'ci3',1)">
+      <input class="carga-input" id="ci2" type="text" maxlength="1" placeholder="M" oninput="avanzarCarga(this,'ci3',1)" autocomplete="off">
       <span class="carga-guion">-</span>
-      <input class="carga-input" id="ci3" type="text" maxlength="2" placeholder="AA" oninput="avanzarCarga(this,null,2)">
+      <input class="carga-input" id="ci3" type="text" maxlength="2" placeholder="AA" oninput="avanzarCarga(this,null,2)" autocomplete="off">
     </div>
     <button class="carga-btn" onclick="verificarClave()">Entrar ✨</button>
     <p class="carga-err hidden" id="carga-err">❌ Contraseña incorrecta, inténtalo de nuevo</p>
@@ -34,7 +34,6 @@
 <audio id="bg-music" loop>
   <source src="audio/Taylor Swift - Lover (Official Music Video).mp3" type="audio/mpeg">
 </audio>
-
 <audio id="snd-unlock" preload="auto">
   <source src="audio/unlock.mp3" type="audio/mpeg">
 </audio>
@@ -43,7 +42,7 @@
 </audio>
 
 <!-- ═══ MENÚ ═══ -->
-<section id="sec-menu" class="sec" style="opacity:0">
+<section id="sec-menu" class="sec hidden">
   <div class="menu-header">
     <div class="menu-corazon-anim">💜</div>
     <h2 class="t">Mi linda princesa 💫</h2>
@@ -198,7 +197,7 @@
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px">
         <input class="cod-input" id="cod-input" type="text" placeholder="Escribe el código"
           maxlength="4" oninput="this.value=this.value.toUpperCase()"
-          onkeydown="if(event.key==='Enter')agregarCod()">
+          onkeydown="if(event.key==='Enter')agregarCod()" autocomplete="off">
         <button class="btn-principal" onclick="agregarCod()">Agregar</button>
       </div>
       <p class="err-msg hidden" id="err-msg">❌ Código incorrecto o ya usado</p>
@@ -215,14 +214,13 @@
     </div>
 
     <div id="contenido-desbloqueado" class="hidden">
-
-      <button class="btn btn-volver-codigos" onclick="volverACodigos()">🔑 Buscar más códigos</button>
+      <button class="btn-volver-codigos" onclick="volverACodigos()">🔑 Buscar más códigos</button>
 
       <div class="carta-final" style="margin-bottom:14px">
-        <div style="font-size:3.2rem;margin-bottom:18px">💌✨🌹</div>
+        <div style="font-size:3.2rem;margin-bottom:18px;text-align:center">💌✨🌹</div>
         <h3>Para ti, mi Sharick</h3>
         <p>Sabía que llegarías hasta aquí, mi pequeña princesa. Después de todo, siempre has sido muy inteligente, aunque quizá pidas ayuda, quién sabe... jajaja. Pero bueno, mi pequeña princesa, esto lo escribo principalmente porque quiero decirte que siempre serás mi pequeña princesa y estaré ahí para todo lo que necesites. También es para decir unas cosas: la lista va en 40, creo, si no ha crecido desde que comencé a hacer los cambios en los textos jajaja. Y bueno, mi pequeña princesa, solo quiero ser más honesto cada día y poder demostrarte que mi amor por ti no se limita a lo corporal, aunque a veces parezca así jajaja. Solo quiero decirte y hacerte sentir especial, y que puedas ser mejor cada día y vivir una vida plena, incluso sin mí en ella. Y para finalizar esta carta solo quiero decirte: te amo. Ya solo queda 1 mes o quizás menos, quién sabe jajaja, y la lista va en 45.</p>
-        <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--azul3);margin-top:16px">Con todo mi amor, Ricitos (y no de oro) 💕</p>
+        <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--azul3);margin-top:16px;text-align:center">Con todo mi amor, Ricitos (y no de oro) 💕</p>
       </div>
 
       <div class="sep"></div>
@@ -242,7 +240,6 @@
 
       <p class="extras-titulo">Aún quedan cosas, mi amor... 🎁</p>
       <p class="extras-sub">Elige qué quieres explorar primero</p>
-
       <div class="extras-grid">
         <div class="extras-card" onclick="mostrarExtra('panel-collage')">
           <span class="e-ic">🖼️</span>
@@ -281,9 +278,9 @@
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Nuestras Fotos 🖼️</p>
         <p class="extras-sub" style="margin-bottom:16px">Cada imagen guarda un recuerdo que atesoro</p>
         <div class="collage-triangulo">
-          <img class="collage-img" src="img/nosotros4.png" alt="Nosotros">
-          <img class="collage-img" src="img/nosotros.jpg"  alt="Nosotros">
-          <img class="collage-img" src="img/nosotros2.jpg" alt="Nosotros">
+          <img class="collage-img" src="img/nosotros4.png" alt="Nosotros" onerror="this.style.display='none'">
+          <img class="collage-img" src="img/nosotros.jpg"  alt="Nosotros" onerror="this.style.display='none'">
+          <img class="collage-img" src="img/nosotros2.jpg" alt="Nosotros" onerror="this.style.display='none'">
         </div>
         <button class="btn" onclick="cerrarExtra('panel-collage')">Cerrar 💫</button>
       </div>
@@ -313,14 +310,12 @@
         <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-razones')">Cerrar 💫</button>
       </div>
 
-      <!-- PANEL: Flores Amarillas (RAMO + CARTA DENTRO) -->
+      <!-- PANEL: Flores Amarillas -->
       <div id="panel-flores" class="panel-extra hidden">
         <p class="extras-titulo" style="font-size:clamp(1.4rem,4.5vw,2.2rem);margin-top:0;margin-bottom:6px">Flores Amarillas 🌼</p>
         <p class="extras-sub" style="margin-bottom:16px">Porque no siempre necesito una fecha especial para pensar en ti</p>
-
         <div class="ramo-wrap" id="ramo-wrap">
           <div class="ramo-caja" id="ramo-caja" onclick="abrirRamo()">
-
             <div class="ramo-flores">
               <span class="ramo-flor f1">🌻</span>
               <span class="ramo-flor f2">🌼</span>
@@ -330,18 +325,13 @@
               <span class="ramo-hoja h1">🍃</span>
               <span class="ramo-hoja h2">🍃</span>
             </div>
-
-            <!-- Sobre/carta doblada asomada entre las flores -->
             <div class="carta-sobre" id="carta-sobre">
               <div class="sobre-solapa"></div>
               <div class="sobre-cuerpo">💌</div>
             </div>
-
             <div class="ramo-envoltura"></div>
             <p class="ramo-hint" id="ramo-hint">Toca el ramo para abrir la carta</p>
           </div>
-
-          <!-- Carta desplegada -->
           <div class="carta-flores hidden" id="carta-flores">
             <div class="carta-flores-inner">
               <p class="flores-texto">
@@ -359,7 +349,6 @@
             </div>
           </div>
         </div>
-
         <button class="btn" style="margin-top:16px" onclick="cerrarExtra('panel-flores')">Cerrar 💫</button>
       </div>
 
@@ -387,7 +376,7 @@
         <button class="btn" style="margin-top:20px" onclick="cerrarExtra('panel-anillo')">Cerrar 💫</button>
       </div>
 
-      <!-- PANEL: Para cuando cumplas (bloqueado) -->
+      <!-- PANEL: Cumpleaños -->
       <div id="panel-cumple" class="panel-extra hidden">
         <p class="extras-titulo" style="font-size:clamp(1.6rem,5vw,2.8rem);margin-top:0;margin-bottom:10px">🎂 Para cuando cumplas</p>
         <div class="cumple-contenido">
@@ -422,7 +411,7 @@
       <p>Quiero cumplir cada uno de los besos y nalgadas que tenemos en nuestraas listaas y Quiero que el universo vea lo que somos juntos y entienda por qué las estrellas decidieron ponernos en el mismo camino.</p>
       <p>Gracias por existir, mi pequeña princesa. Gracias por elegirme también, por quedarte cuando era difícil y por amarme como lo haces. Este no es el final de nada, al contrario...</p>
       <p class="final-frase">Esto apenas es el comienzo de todo lo que quiero vivir contigo ❤️</p>
-      <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--azul3);margin-top:20px">Con todo mi corazón, Ricitos (y no de oro) 💜</p>
+      <p style="font-family:'Great Vibes',cursive;font-size:2.2rem;color:var(--azul3);margin-top:20px;text-align:center">Con todo mi corazón, Ricitos (y no de oro) 💜</p>
     </div>
     <button class="btn-principal" onclick="ir('sec-menu')" style="margin-top:30px">← Volver al inicio</button>
   </div>
