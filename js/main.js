@@ -673,10 +673,11 @@ function irFinalAmor() {
 /* ═══════════════════════════════════════════════════
    CUMPLEAÑOS
 ═══════════════════════════════════════════════════ */
+const FECHA_CUMPLE = new Date('2026-10-08T00:00:00');
+
 function verificarCumple() {
   const hoy = new Date();
-  const cumple = new Date('2026-10-08');
-  if (hoy >= cumple) {
+  if (hoy >= FECHA_CUMPLE) {
     mostrarExtra('panel-cumple');
   }
 }
@@ -761,6 +762,7 @@ function desbloquear() {
     }, i * 80);
   }
   iniciarCuentaRegresiva();
+  init18();
 }
 
 function volverACodigos() {
@@ -838,6 +840,154 @@ function cerrarExtra(id) {
 }
 
 /* ═══════════════════════════════════════════════════
+   CONFETI
+═══════════════════════════════════════════════════ */
+let confCanvas = null, confCtx = null, confPartes = [], confRAF = null;
+
+function initConfeti() {
+  if (confCanvas) return;
+  confCanvas = document.createElement('canvas');
+  confCanvas.id = 'confeti-canvas';
+  document.body.appendChild(confCanvas);
+  confCtx = confCanvas.getContext('2d');
+  ajustarConfeti();
+  window.addEventListener('resize', ajustarConfeti);
+}
+
+function ajustarConfeti() {
+  confCanvas.width  = window.innerWidth;
+  confCanvas.height = window.innerHeight;
+}
+
+function lanzarConfeti(cantidad = 140, x = window.innerWidth / 2, y = window.innerHeight * .6, colores) {
+  initConfeti();
+  const paleta = colores || ['#ff69b4', '#ffd700', '#b388ff', '#4fc3f7', '#ff1493', '#a5d6a7', '#ffffff'];
+  const sesgo = x < window.innerWidth * .3 ? .6 : (x > window.innerWidth * .7 ? -.6 : 0);
+  for (let i = 0; i < cantidad; i++) {
+    const ang = -Math.PI / 2 + sesgo + (Math.random() - .5) * Math.PI * .9;
+    const vel = Math.random() * 10 + 6;
+    confPartes.push({
+      x, y,
+      vx: Math.cos(ang) * vel,
+      vy: Math.sin(ang) * vel,
+      w: Math.random() * 7 + 5,
+      h: Math.random() * 4 + 4,
+      rot: Math.random() * Math.PI * 2,
+      vr: (Math.random() - .5) * .35,
+      color: paleta[Math.floor(Math.random() * paleta.length)],
+      vida: 0,
+      max: Math.random() * 80 + 110,
+      circ: Math.random() < .25
+    });
+  }
+  if (!confRAF) confRAF = requestAnimationFrame(animarConfeti);
+}
+
+function animarConfeti() {
+  confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+  confPartes = confPartes.filter(p => p.vida < p.max && p.y < confCanvas.height + 30);
+  confPartes.forEach(p => {
+    p.vy += .28;
+    p.vx *= .985;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.rot += p.vr;
+    p.vida++;
+    confCtx.save();
+    confCtx.globalAlpha = Math.min(1, (p.max - p.vida) / 30);
+    confCtx.translate(p.x, p.y);
+    confCtx.rotate(p.rot);
+    confCtx.fillStyle = p.color;
+    if (p.circ) {
+      confCtx.beginPath();
+      confCtx.arc(0, 0, p.h / 1.2, 0, Math.PI * 2);
+      confCtx.fill();
+    } else {
+      confCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+    }
+    confCtx.restore();
+  });
+  if (confPartes.length) {
+    confRAF = requestAnimationFrame(animarConfeti);
+  } else {
+    confRAF = null;
+    confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   FELICES 18 AÑOS (visible desde el 8 de octubre de 2026)
+═══════════════════════════════════════════════════ */
+let pastel18Soplado = false;
+let init18Hecho = false;
+
+function init18() {
+  if (init18Hecho) return;
+  const bloque = document.getElementById('bloque-18');
+  const sec = document.getElementById('seccion-18');
+  if (!bloque || !sec) return;
+
+  // Antes del 8 de octubre de 2026 la sección permanece oculta
+  if (new Date() < FECHA_CUMPLE) return;
+
+  init18Hecho = true;
+  bloque.classList.remove('hidden');
+
+  if (!('IntersectionObserver' in window)) {
+    sec.classList.add('visible');
+    return;
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        sec.classList.add('visible');
+        setTimeout(() => lanzarConfeti(90, window.innerWidth / 2, window.innerHeight * .55), 1500);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+  obs.observe(sec);
+}
+
+function celebrar18() {
+  const wrap = document.getElementById('pastel-wrap');
+  if (!wrap) return;
+  const w = window.innerWidth, h = window.innerHeight;
+
+  if (!pastel18Soplado) {
+    pastel18Soplado = true;
+    wrap.classList.add('soplado');
+    const hint = document.getElementById('pastel-hint');
+    if (hint) hint.textContent = '¡Que se cumpla tu deseo! 🎉 (toca otra vez para más confeti)';
+    lanzarConfeti(160, w * .5, h * .6);
+    setTimeout(() => lanzarConfeti(110, w * .1, h * .8), 250);
+    setTimeout(() => lanzarConfeti(110, w * .9, h * .8), 450);
+    setTimeout(() => {
+      document.querySelectorAll('.b18-reveal').forEach(el => el.classList.add('visible'));
+    }, 900);
+  } else {
+    lanzarConfeti(120, w * .5, h * .6);
+  }
+}
+
+function abrirSobre18() {
+  const s = document.getElementById('sobre18');
+  if (!s || s.classList.contains('abierto')) return;
+  s.classList.add('abierto');
+  const z = document.getElementById('sobre18-zona');
+  if (z) z.classList.add('abierto');
+  const hint = document.getElementById('sobre18-hint');
+  if (hint) hint.style.display = 'none';
+  playSound('snd-unlock');
+  setTimeout(() => {
+    lanzarConfeti(120, window.innerWidth / 2, window.innerHeight * .65, ['#ffd700', '#ffecb3', '#ff69b4', '#ffffff']);
+  }, 700);
+  setTimeout(() => {
+    s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 900);
+}
+
+/* ═══════════════════════════════════════════════════
    ESTILOS DINÁMICOS EXTRA
 ═══════════════════════════════════════════════════ */
 const sLluvia = document.createElement('style');
@@ -853,4 +1003,5 @@ document.head.appendChild(sLluvia);
 ═══════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   cargarCodigosGuardados();
+  init18();
 });
