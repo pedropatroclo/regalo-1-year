@@ -970,6 +970,18 @@ function celebrar18() {
   }
 }
 
+function abrirCarta18() {
+  const c = document.getElementById('carta18');
+  if (!c || c.classList.contains('abierta') || c.classList.contains('cerrando')) return;
+  c.classList.add('cerrando');
+  setTimeout(() => {
+    c.classList.remove('cerrando');
+    c.classList.add('abierta');
+    lanzarConfeti(100, window.innerWidth / 2, window.innerHeight * .6);
+    c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 500);
+}
+
 function abrirSobre18() {
   const s = document.getElementById('sobre18');
   if (!s || s.classList.contains('abierto')) return;
