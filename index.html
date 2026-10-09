@@ -423,14 +423,52 @@
               <p class="pastel-hint" id="pastel-hint">Toca el pastel para soplar las velitas 🕯️</p>
             </div>
 
-            <!-- Mensaje (aparece al soplar las velas) -->
-            <div class="carta-final b18-mensaje b18-reveal">
-              <div style="font-size:3rem;margin-bottom:14px;text-align:center">🎂💜🎁</div>
-              <h3>Feliz cumpleaños, mi Sharick</h3>
-              <p>Llegó el día, mi pequeña princesa. Hoy cumples 18 años y no tienes idea de lo orgulloso que estoy de ver a la persona en la que te has convertido: valiente, inteligente y con ese corazón que ilumina todo lo que toca, jajaja.</p>
-              <p>Gracias por dejarme ser parte de tu vida mientras creces, por tu paciencia con este tonto apático, por cada risa y por cada momento que hemos vivido juntos. Ojalá este nuevo año venga cargado de todo lo que sueñas: logros en tu camino a ser doctora, viajes, paz y muchísimo amor.</p>
-              <p>Espero que se cumpla ese deseo que acabas de pedir, mi vida. Y como todavía falta una cosita, abre el sobre de aquí abajo... 💌</p>
-              <p class="b18-firma">Con todo mi amor, Ricitos (y no de oro) 💜</p>
+            <!-- Carta de cumpleaños (aparece al soplar las velas) -->
+            <div class="b18-reveal b18-carta-zona">
+              <div class="carta18" id="carta18">
+
+                <!-- Carta doblada (estado cerrado) -->
+                <div class="carta18-cerrada" onclick="abrirCarta18()">
+                  <div class="carta18-pliegue"></div>
+                  <span class="carta18-emoji">📜</span>
+                  <span class="carta18-titulo-c">Carta oficial de cumpleaños</span>
+                  <span class="carta18-aviso">Toca para abrir 👀</span>
+                </div>
+
+                <!-- Carta abierta -->
+                <div class="carta-final carta18-papel">
+                  <div style="--i:0;font-size:3rem;margin-bottom:14px;text-align:center">🎂🥳📜</div>
+                  <h3 style="--i:1">Comunicado oficial: ya eres mayor de edad, mi Sharick</h3>
+
+                  <p style="--i:2">Atención, atención. Por medio de la presente se informa que a partir de hoy eres <strong>legalmente adulta</strong>. Felicidades, ahora puedes cometer tus propios errores con total validez ante la ley. Aunque, siendo sinceros, en mi cabeza vas a seguir siendo mi pequeña princesa culona, y no hay trámite que cambie eso, jajaja.</p>
+
+                  <p style="--i:3">Te escribo esto con mucho esfuerzo, porque como sabrás yo soy un tonto apático y no estoy acostumbrado a ser meloso dos veces en el mismo año. Esta página ya me costó muchas horas, mucho código y varias peleas con el CSS. Si te gustó, perfecto. Si no, igual vas a decir que sí, porque sé que te da pena decirme que no, jajaja.</p>
+
+                  <p style="--i:4"><strong>Beneficios de tus 18 años (letra pequeña incluida):</strong></p>
+                  <ul class="c18-lista" style="--i:5">
+                    <li>Ya puedes decir "soy mayor de edad" cada vez que te lleven la contraria. Úsalo con moderación, o no, igual te voy a ignorar.</li>
+                    <li>Ya puedes votar. Por favor, hazlo mejor que cuando eliges qué comer y tardas dos horas en decidir.</li>
+                    <li>Oficialmente eres una doctora en proceso adulta. Cuando te gradúes me tienes que atender gratis, es una cláusula que acabo de inventar.</li>
+                    <li>Ya no vale la excusa de "es que soy una niña" cuando se te olvida algo. Ahora se te olvida como adulta, que es más grave.</li>
+                    <li>Se te permite seguir siendo mi acaro, aunque ya tengas edad para entender que los ácaros no son una mascota ideal.</li>
+                  </ul>
+
+                  <p style="--i:6"><strong>Efectos secundarios de cumplir 18:</strong> aumento repentino de responsabilidades, cansancio injustificado, ganas de dormir a cualquier hora y una inexplicable necesidad de decir "ay, qué viejita me estoy volviendo". Quiero recordarte que sigues siendo menor que yo, así que ni se te ocurra quejarte de la edad, jajaja.</p>
+
+                  <p style="--i:7">También quiero dejar constancia de que se te dan fatal los números, pero aun así lograste llegar a los 18 sin perder la cuenta, lo cual es un milagro estadístico. Yo en cambio sigo contando la lista de pendientes entre los dos, que va en 45 según mis registros, y no pienso olvidarla aunque tú hagas como que no la ves.</p>
+
+                  <p style="--i:8">Un saludo especial a Amber y a Christopher, que seguramente andan por ahí sin saber que hoy es un día importante. Díganles que hoy se portan bien, porque la cumpleañera manda. Y que no se atrevan a hacerte pasar rabia hoy, que el pastel ya lo apagaste tú sola y con eso basta.</p>
+
+                  <p style="--i:9">Ojalá este año te vaya espectacular. Que apruebes todo sin sufrir demasiado, que no te enfermes (aunque seas médica en proceso, no te hagas la fuerte), que comas rico y que sigas tan terca como siempre, porque esa terquedad algún día te va a hacer una doctora increíble. O una jefa insoportable, todavía no decido, jajaja.</p>
+
+                  <p style="--i:10">Gracias por aguantarme un año completo, con mis chistes malos, mi cara de pocos amigos y mi pésima costumbre de contestar tarde. No es fácil, lo sé, deberían darte una medalla. Como no tengo una, te dejo el sobre de abajo, que es mucho mejor y no se oxida.</p>
+
+                  <p style="--i:11">Bueno, ya me alargué demasiado. Disfruta tu día, come pastel hasta arrepentirte y no te olvides de abrir el sobre de abajo. Ahí hay algo que vale mucho más que cualquier carta... 💌👇</p>
+
+                  <p class="b18-firma" style="--i:12">Feliz cumpleaños, culona. Con cariño y burla, Ricitos (y no de oro) 💜</p>
+                </div>
+
+              </div>
             </div>
 
             <!-- Sobre con el vale -->
