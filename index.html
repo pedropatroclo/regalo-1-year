@@ -393,6 +393,70 @@
         <button class="btn" onclick="cerrarExtra('panel-cumple')">Cerrar 💫</button>
       </div>
 
+      <!-- ═══ SECCIÓN: FELICES 18 AÑOS (visible desde el 8 de octubre de 2026) ═══ -->
+      <div id="bloque-18" class="hidden">
+        <div class="sep"></div>
+        <div id="seccion-18" class="b18-wrap">
+          <div class="b18-globos" aria-hidden="true">
+            <span class="globo g1">🎈</span>
+            <span class="globo g2">🎈</span>
+            <span class="globo g3">🎈</span>
+            <span class="globo g4">🎈</span>
+            <span class="globo g5">🎈</span>
+          </div>
+
+          <div class="b18-contenido">
+            <p class="extras-titulo b18-titulo">🎉 ¡Felices 18 años! 🎉</p>
+            <p class="extras-sub">Pide un deseo, mi pequeña princesa...</p>
+
+            <!-- Pastel -->
+            <div class="pastel-wrap" id="pastel-wrap" onclick="celebrar18()">
+              <div class="pastel">
+                <div class="p18-vela v1"><span class="p18-llama"></span></div>
+                <div class="p18-vela v2"><span class="p18-llama"></span></div>
+                <div class="p18-vela v3"><span class="p18-llama"></span></div>
+                <div class="p18-capa c3"></div>
+                <div class="p18-capa c2"></div>
+                <div class="p18-capa c1"></div>
+                <div class="p18-plato"></div>
+              </div>
+              <p class="pastel-hint" id="pastel-hint">Toca el pastel para soplar las velitas 🕯️</p>
+            </div>
+
+            <!-- Mensaje (aparece al soplar las velas) -->
+            <div class="carta-final b18-mensaje b18-reveal">
+              <div style="font-size:3rem;margin-bottom:14px;text-align:center">🎂💜🎁</div>
+              <h3>Feliz cumpleaños, mi Sharick</h3>
+              <p>Llegó el día, mi pequeña princesa. Hoy cumples 18 años y no tienes idea de lo orgulloso que estoy de ver a la persona en la que te has convertido: valiente, inteligente y con ese corazón que ilumina todo lo que toca, jajaja.</p>
+              <p>Gracias por dejarme ser parte de tu vida mientras creces, por tu paciencia con este tonto apático, por cada risa y por cada momento que hemos vivido juntos. Ojalá este nuevo año venga cargado de todo lo que sueñas: logros en tu camino a ser doctora, viajes, paz y muchísimo amor.</p>
+              <p>Espero que se cumpla ese deseo que acabas de pedir, mi vida. Y como todavía falta una cosita, abre el sobre de aquí abajo... 💌</p>
+              <p class="b18-firma">Con todo mi amor, Ricitos (y no de oro) 💜</p>
+            </div>
+
+            <!-- Sobre con el vale -->
+            <div class="b18-reveal">
+              <div class="sobre18-zona" id="sobre18-zona">
+                <p class="extras-sub">Un último regalo para ti</p>
+                <div class="sobre18" id="sobre18" onclick="abrirSobre18()">
+                  <div class="sobre18-atras"></div>
+                  <div class="sobre18-solapa"></div>
+                  <div class="sobre18-sello">♥</div>
+                  <div class="sobre18-carta">
+                    <span class="c18-emoji">🎟️</span>
+                    <span class="c18-peq">VALE POR</span>
+                    <span class="c18-gran">Cualquier cosa</span>
+                    <span class="c18-sub">Aplicable para siempre ♾️</span>
+                    <span class="c18-firma">— Ricitos (y no de oro) 💜</span>
+                  </div>
+                  <div class="sobre18-frente"></div>
+                </div>
+                <p class="sobre18-hint" id="sobre18-hint">Toca el sobre para abrirlo 💌</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <button class="btn btn-volver" style="margin-top:28px" onclick="ir('sec-menu')">← Volver al inicio</button>
     </div>
   </div>
