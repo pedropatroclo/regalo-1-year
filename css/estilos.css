@@ -1839,11 +1839,6 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.b18-mensaje {
-  max-width: 520px;
-  margin: 0 auto 30px;
-}
-
 .carta-final .b18-firma {
   font-family: 'Great Vibes', cursive;
   font-size: 2rem;
@@ -1964,3 +1959,104 @@ body {
   color: rgba(255,255,255,.6);
   animation: hintPulso 2s ease-in-out infinite;
 }
+
+/* ═══════════════════════════════════════════════════
+   CARTA 18 AÑOS — ANIMACIÓN DE APERTURA
+═══════════════════════════════════════════════════ */
+.b18-carta-zona {
+  max-width: 560px;
+  margin: 0 auto 30px;
+}
+
+.carta18 { position: relative; }
+
+/* Carta doblada */
+.carta18-cerrada {
+  position: relative;
+  width: 270px;
+  height: 180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  cursor: pointer;
+  background: linear-gradient(160deg, #fffdf3, #fdeab0);
+  border-radius: 6px;
+  color: #6b4400;
+  box-shadow: 0 12px 26px rgba(0,0,0,.45);
+  animation: ramoFlotar 4.5s ease-in-out infinite;
+  transition: filter .3s;
+}
+
+.carta18-cerrada:hover { filter: brightness(1.08); }
+
+.carta18-pliegue {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,.18), transparent);
+}
+
+.carta18-emoji { font-size: 2.4rem; line-height: 1; }
+.carta18-titulo-c { font-family: 'Cinzel', serif; font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; padding: 0 12px; }
+.carta18-aviso { font-size: .8rem; font-style: italic; animation: hintPulso 2s ease-in-out infinite; }
+
+.carta18.cerrando .carta18-cerrada {
+  animation: carta18Plegar .5s ease forwards;
+}
+
+@keyframes carta18Plegar {
+  0%   { transform: scale(1) rotate(0deg); opacity: 1; }
+  50%  { transform: scale(1.1) rotate(-3deg); opacity: 1; }
+  100% { transform: scale(.2) rotate(8deg) translateY(-40px); opacity: 0; }
+}
+
+.carta18.abierta .carta18-cerrada { display: none; }
+
+/* Carta desplegada */
+.carta18-papel { display: none; }
+
+.carta18.abierta .carta18-papel {
+  display: block;
+  transform-origin: top center;
+  animation: carta18Desdoblar .9s cubic-bezier(.34,1.2,.64,1) both;
+}
+
+@keyframes carta18Desdoblar {
+  0%   { opacity: 0; transform: perspective(900px) rotateX(-85deg) scaleY(.1); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: perspective(900px) rotateX(0deg) scaleY(1); }
+}
+
+/* Las líneas aparecen una por una */
+.carta18.abierta .carta18-papel > * {
+  opacity: 0;
+  animation: carta18Linea .7s ease both;
+  animation-delay: calc(.7s + var(--i, 0) * .3s);
+}
+
+@keyframes carta18Linea {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.carta18-papel h3 {
+  font-size: 1.7rem;
+  line-height: 1.25;
+}
+
+.carta18-papel strong { color: var(--dorado); font-weight: 700; }
+
+.c18-lista {
+  margin: 0 0 14px 20px;
+  color: var(--texto-suave);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.c18-lista li { margin-bottom: 8px; }
